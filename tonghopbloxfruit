@@ -1,0 +1,257 @@
+local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
+
+local Window = WindUI:CreateWindow({
+    Title = "M-Pro Hub",
+    Icon = "door-open",
+    Author = "Kiettrumhtml",
+    Folder = "CloudHub",
+    Size = UDim2.fromOffset(580, 460),
+    Transparent = true,
+    Theme = "Dark",
+    SideBarWidth = 200,
+    --Background = "rbxassetid://13511292247", -- rbxassetid only
+    HasOutline = false,
+    -- remove it below if you don't want to use the key system in your script.
+    KeySystem = { 
+        Key = { "imp0em0myhft3iaq7o3uipr3dr4py8jizgs" },
+        Note = "Premium Key Enter",
+        -- Thumbnail = {
+        --     Image = "rbxassetid://18220445082", -- rbxassetid only
+        --     Title = "Thumbnail"
+        -- },
+        URL = "", -- remove this if the key is not obtained from the link.
+        SaveKey = true, -- optional
+    },
+})
+
+
+Window:EditOpenButton({
+    Title = "Open Menu",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0,10),
+    StrokeThickness = 2,
+    Color = ColorSequence.new( -- gradient
+        Color3.fromHex("FF0F7B"), 
+        Color3.fromHex("F89B29")
+    ),
+    --Enabled = false,
+    Draggable = true,
+})
+local Tabs = {
+    Main = Window:Tab({ Title = "Blox Fruit Script", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." }),
+    Vip = Window:Tab({ Title = "Blox Fruit Vip", Icon = "mouse-pointer-2", Desc = "Contains interactive buttons for various actions." }),
+
+}
+
+
+Tabs.Main:Button({
+    Title = "Xero Hub",
+    Locked = false,
+    Callback = function()
+getgenv().Team = "Marines"
+getgenv().Hide_Menu = false
+getgenv().Auto_Execute = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Blue x Hub",
+    Locked = false,
+    Callback = function()
+_G.Team = "Pirates"
+_G.FixLag = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
+  end
+})
+
+
+Tabs.Main:Button({
+    Title = "Xeter Hub",
+    Locked = false,
+    Callback = function()
+getgenv().Version = "V2"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Loader/main/Xeter.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Vxaze Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/Skidlamcho.txt"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Zinner Hub",
+    Locked = false,
+    Callback = function()
+getgenv().Team = "Pirates"
+loadstring(game:HttpGet('https://raw.githubusercontent.com/HoangNguyenk8/Scripts/refs/heads/main/Loader.lua'))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Tsuo Beta Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Banana Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Lion Hub",
+    Locked = false,
+    Callback = function()
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().team = "Pirates" -- Marines
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e0c7fcf6c077fc23475cf4ce4db58e42.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Hiru Hub",
+    Locked = false,
+    Callback = function()
+getgenv().Team = "Pirates"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/Source/main/HiruHub.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Shark Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://shorturl.at/kyOxL"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Kncrypt Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Blue x Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/EN.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Ronix Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/513ccdb3ae8a61d4d7698fc337e5256d.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Strix Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet"https://scriptroblox.onrender.com/strix")()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "W-Azure Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Quantum Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FlazhGG/QTONYX/refs/heads/main/NextGeneration.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Andepzai Hub",
+    Locked = false,
+    Callback = function()
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Astral Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Overgustx2/Main/refs/heads/main/BloxFruits_25.html"))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Thunderz Hub",
+    Locked = false,
+    Callback = function()
+_G.Webhook = ""
+_G.MetodeTeleport = "Tween" --"Tween" or "Instant"
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/ThundarZ/Welcome/refs/heads/main/Main/BloxFruit/FindFruit.lua')))()
+  end
+})
+
+Tabs.Main:Button({
+    Title = "Ganteng Hub",
+    Locked = false,
+    Callback = function()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a5c3af437cd698d64379cf75cacb9281.lua"))()
+  end
+})
+Tabs.Main:Button({
+    Title = "Volcano Hub",
+    Callback = function() -- VOLCANO
+loadstring(game:HttpGet("https://raw.githubusercontent.com/wpisstestfprg/Volcano/refs/heads/main/VolcanoNewUpdated.luau"))()
+ end
+})
+Tabs.Main:Button({
+        Title = "Forge Hub",
+    Locked = false,
+    Callback = function() 
+
+ end
+})
+Tabs.Main:Button({
+    Title = "Frostware Hub",
+    Callback = function()  
+loadstring(game:HttpGet"https://frostware.onrender.com/fw")()
+end
+})
+
+
+Tabs.Vip:Button({
+    Title = "Maru Hub Premium",
+    Locked =true,
+    Callback = function()  end
+})
+
+Tabs.Vip:Button({
+    Title = "Banana Hub Premium",
+    Locked =true,
+    Callback = function()  end
+})
+
+Tabs.Vip:Button({
+    Title = "W-Azure Hub Premium",
+    Locked =true,
+    Callback = function()  end
+})
