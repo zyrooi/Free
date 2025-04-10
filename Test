@@ -1,0 +1,64 @@
+local ValidKeys = {
+    "MichaelKey123",
+    "VIPKey456",
+    "Premium999",
+    "BanhMiNuocTuong"
+}
+
+local function isValidKey(key)
+    for _, v in ipairs(ValidKeys) do
+        if v == key then
+            return true
+        end
+    end
+    return false
+end
+
+if not getgenv().key or not isValidKey(getgenv().key) then return end
+
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=91683227610697&w=420&h=420"
+getgenv().ToggleUI = "E"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI == true then getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui");
+        local ImageButton = Instance.new("ImageButton");
+        local UICorner = Instance.new("UICorner");
+        OpenUI.Name = "OpenUI";
+        OpenUI.Parent = game:GetService("CoreGui");
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+        ImageButton.Parent = OpenUI;
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105,105,105);
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0,0,0,0);
+        ImageButton.Size = UDim2.new(0,50,0,50);
+        ImageButton.Image = getgenv().Image;
+        ImageButton.Draggable = true;
+        ImageButton.Transparency = 1;
+        UICorner.CornerRadius = UDim.new(0,200);
+        UICorner.Parent = ImageButton;
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true,getgenv().ToggleUI,false,game);
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Michael Hub [Premium]",
+    SubTitle = "By: Michael",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(530, 380),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.E
+})
+
+local Tabs = {
+    Shop = Window:AddTab({ Title = "Tab Shop", Icon = "" }),
+    Fruit = Window:AddTab({ Title = "Tab Fruit", Icon = "" }),
+    Raid = Window:AddTab({ Title = "Tab Raid and Race", Icon = "" }),
+}
