@@ -1,10 +1,12 @@
+-- Danh sách các key hợp lệ
 local ValidKeys = {
     "MichaelKey123",
-    "VIPKey456",
+    "MichaelKey134",
     "Premium999",
-    "BanhMiNuocTuong"
+    "VIPKey456"
 }
 
+-- Hàm kiểm tra key
 local function isValidKey(key)
     for _, v in ipairs(ValidKeys) do
         if v == key then
@@ -14,37 +16,52 @@ local function isValidKey(key)
     return false
 end
 
-if not getgenv().key or not isValidKey(getgenv().key) then return end
+-- Kiểm tra key có hợp lệ không
+if not getgenv().key or not isValidKey(getgenv().key) then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "KEY SAI",
+        Text = "Vui lòng nhập đúng key để sử dụng script.",
+        Duration = 5
+    })
+    return -- Dừng script nếu key không hợp lệ
+end
 
+-- Nếu key hợp lệ thì chạy UI Fluent
 repeat task.wait() until game:IsLoaded()
 
 getgenv().Image = "rbxthumb://type=Asset&id=91683227610697&w=420&h=420"
 getgenv().ToggleUI = "E"
 
 task.spawn(function()
-    if not getgenv().LoadedMobileUI == true then getgenv().LoadedMobileUI = true
-        local OpenUI = Instance.new("ScreenGui");
-        local ImageButton = Instance.new("ImageButton");
-        local UICorner = Instance.new("UICorner");
-        OpenUI.Name = "OpenUI";
-        OpenUI.Parent = game:GetService("CoreGui");
-        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-        ImageButton.Parent = OpenUI;
-        ImageButton.BackgroundColor3 = Color3.fromRGB(105,105,105);
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
         ImageButton.BackgroundTransparency = 0.8
-        ImageButton.Position = UDim2.new(0,0,0,0);
-        ImageButton.Size = UDim2.new(0,50,0,50);
-        ImageButton.Image = getgenv().Image;
-        ImageButton.Draggable = true;
-        ImageButton.Transparency = 1;
-        UICorner.CornerRadius = UDim.new(0,200);
-        UICorner.Parent = ImageButton;
+        ImageButton.Position = UDim2.new(0, 0, 0, 0)
+        ImageButton.Size = UDim2.new(0, 50, 0, 50)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+
+        UICorner.CornerRadius = UDim.new(0, 200)
+        UICorner.Parent = ImageButton
+
         ImageButton.MouseButton1Click:Connect(function()
-            game:GetService("VirtualInputManager"):SendKeyEvent(true,getgenv().ToggleUI,false,game);
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
         end)
     end
 end)
 
+-- Load Fluent UI
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local Window = Fluent:CreateWindow({
