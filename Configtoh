@@ -1,3 +1,21 @@
+local ValidKeys = {
+    "JRTtibghwXeykmqzh4r3oCvzf35xtb",
+
+}
+
+local function isValidKey(key)
+    for _, v in ipairs(ValidKeys) do
+        if v == key then
+            return true
+        end
+    end
+    return false
+end
+
+if not getgenv().key or not isValidKey(getgenv().key) then
+    game:GetService("Players").LocalPlayer:Kick("Key không hợp lệ!")
+    return
+end
 
 repeat task.wait() until game:IsLoaded()
 
