@@ -1,0 +1,401 @@
+
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=107425659361094&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 0, 0, 0)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(0, 10)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Cac Hub",
+    SubTitle = "By: Michael",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(500, 350),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Blox = Window:AddTab({ Title = "Tab Blox Fruit", Icon = "" }),
+    Dead = Window:AddTab({ Title = "Tab Dead Rail", Icon = "" }),
+    King = Window:AddTab({ Title = "Tab King Legacy", Icon = "" }),
+    Meme = Window:AddTab({ Title = "Tab Meme Sea", Icon = "" }),
+    
+}
+
+
+
+Tabs.Blox:AddButton({
+Title = "BlueX V2 Hub",
+        Description = "",
+        Callback = function()
+_G.Team = "Pirates"
+_G.FixLag = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Xero Hub",
+        Description = "",
+        Callback = function()
+getgenv().Team = "Marines"
+getgenv().Hide_Menu = false
+getgenv().Auto_Execute = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Ganteng Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a5c3af437cd698d64379cf75cacb9281.lua"))()
+        end
+    })
+
+
+Tabs.Blox:AddButton({
+Title = "Shark Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://shorturl.at/kyOxL"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Lion Hub",
+        Description = "",
+        Callback = function()
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().team = "Pirates" -- Marines
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/e0c7fcf6c077fc23475cf4ce4db58e42.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Banana Hub ( Fake )",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Hiru Hub",
+        Description = "",
+        Callback = function()
+getgenv().Team = "Pirates"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/Source/main/HiruHub.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Redz Hub",
+        Description = "",
+        Callback = function()
+local Settings = {
+  JoinTeam = "Pirates"; -- Pirates/Marines
+  Translator = true; -- true/false
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/newredz/BloxFruits/refs/heads/main/Source.luau"))(Settings)
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Tsuo Hub ( Beta )",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Zinner Hub",
+        Description = "",
+        Callback = function()
+getgenv().Team = "Pirates"
+loadstring(game:HttpGet('https://raw.githubusercontent.com/HoangNguyenk8/Scripts/refs/heads/main/Loader.lua'))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Xeter Hub",
+        Description = "",
+        Callback = function()
+getgenv().Version = "V2"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Loader/main/Xeter.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Blue X Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Vxeze Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/Skidlamcho.txt"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "BillDev Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/selciawashere/screepts/refs/heads/main/BFKEYSYS",true))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Frostware Hub ( Chest )",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet"https://frostware.onrender.com/fwchest")()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Frost Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet"https://frostware.onrender.com/fw")()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Forge Hub",
+        Description = "",
+        Callback = function()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Lion Hub",
+        Description = "",
+        Callback = function()
+-- LION
+getgenv().Team = "Pirates"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NHMdz/BloxFruit/refs/heads/main/Lion%20Hub.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Volcano Hub",
+        Description = "",
+        Callback = function()
+-- VOLCANO
+loadstring(game:HttpGet("https://raw.githubusercontent.com/wpisstestfprg/Volcano/refs/heads/main/VolcanoNewUpdated.luau"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Quantum Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Trustmenotcondom/QTONYX/refs/heads/main/QuantumOnyx.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Kncrypt Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/Kncrypt/refs/heads/main/sources/BloxFruit.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Astral Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Overgustx2/Main/refs/heads/main/BloxFruits_25.html"))()
+        end
+    })
+
+
+Tabs.Blox:AddButton({
+Title = "Zenith Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/ZenithHub/refs/heads/main/Loader"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Andepzai Hub",
+        Description = "",
+        Callback = function()
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
+        end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Flow Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Yumiara/Overflow/refs/heads/main/Main.lua"))()
+end
+    })
+
+Tabs.Blox:AddButton({
+Title = "Strix Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet"https://scriptroblox.onrender.com/strix")()
+        end
+    })
+
+
+Tabs.Dead:AddButton({
+Title = "Tora Me Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/refs/heads/main/DeadRails", true))()
+        end
+    })
+
+
+Tabs.King:AddButton({
+Title = "Tsuo Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/king%20legacy"))()
+        end
+    })
+
+
+Tabs.King:AddButton({
+Title = "Hyper Hub",
+        Description = "",
+        Callback = function()
+repeat wait() until game:IsLoaded()
+loadstring(gahow to script King Legacy roblox mobile, how to script mobile King Legacy,King Legacy script,King Legacy hack mobile,roblox King Legacy script mobile,King Legacy roblox script mobile,mobile script for King Legacy,mobile roblox hack King Legacy,how to mobile script in King Legacy,King Legacy mobile script,mobile script King Legacyme:HttpGet("https://raw.githubusercontent.com/DookDekDEE/Hyper/main/script.lua"))() 
+        end
+    })
+
+Tabs.King:AddButton({
+Title = "Arc Hub",
+        Description = "",
+        Callback = function()
+getgenv().CustomDistance = 10 -- For Bug Can't Swipe Distance
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ChopLoris/ArcHub/main/main.lua"))()
+        end
+    })
+
+Tabs.King:AddButton({
+Title = "Zee Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet('https://zuwz.me/Ls-Zee-Hub-KL'))() 
+        end
+    })
+
+Tabs.King:AddButton({
+Title = "Hulk Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/HULKUexe/mobileX/main/FreeScript.lua")() 
+        end
+    })
+
+Tabs.King:AddButton({
+Title = "King Legacy",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGetAsync("https://lua-library.btteam.net/script-auth.txt"))()
+        end
+    })
+
+Tabs.King:AddButton({
+Title = "Philippines Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/PrintH3lloW0rld/Philippine-hub/main/Philippine%20Hub%201.0"))()
+        end
+    })
+
+
+
+Tabs.Meme:AddButton({
+Title = "Shiny Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ZaqueHub/ShinyHub-MMSea/main/MEME%20SEA%20PROTECT.txt'))()
+        end
+    })
+
+
+Tabs.Meme:AddButton({
+Title = "Elgato Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TranVanBao1411/ElgatoHub/main/Loader.lua"))()
+        end
+    })
+
+Tabs.Meme:AddButton({
+Title = "Redz Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/MemeSea/main/Source.lua"))()
+        end
+    })
+
+Tabs.Meme:AddButton({
+Title = "Yuto Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Binintrozza/yutv2e/main/Yutohub')))()
+        end
+    })
+
+Tabs.Meme:AddButton({
+Title = "Brutality v4 Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MedusaScript/Botuna/main/BrutalityHubV4.lua"))()
+        end
+    })
+
+Tabs.Meme:AddButton({
+Title = "Brutality Hub",
+        Description = "",
+        Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Yatsuraa/Matsune/main/memesea.lua"))()
+        end
+    })
