@@ -625,13 +625,10 @@ end)
         Title = "Raid Lab",
         Description = "",
         Callback = function()
-            Tween2(CFrame.new(-5017.40869, 314.844055, -2823.0127, -0.925743818, 4.48217499e-08, -0.378151238, 4.55503146e-09, 1, 1.07377559e-07, 0.378151238, 9.7681621e-08, -0.925743818))
         end
     })
-end
 
 local ToggleLaw = Tabs.Raid:AddToggle("ToggleLaw", {Title = "Auto Law", Default = false })
-
 ToggleLaw:OnChanged(function(Value)
     Auto_Law = Value
 end)
@@ -640,7 +637,7 @@ Tabs.Race:AddButton({
     Title = "Timple Of Time",
     Description = "",
     Callback = function()
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+        
     end
 })
 
@@ -649,8 +646,7 @@ Tabs.Race:AddButton({
     Title = "Lever Pull",
     Description = "",
     Callback = function()
-        Tween2(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
-    end
+        end
 })
 
 
@@ -658,7 +654,7 @@ Tabs.Race:AddButton({
     Title = "Acient One",
     Description = "",
     Callback = function()
-        Tween2(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
+
     end
 })
 
@@ -683,14 +679,3 @@ local ToggleScamer = Tabs.Fruit:AddToggle("ToggleScamer", {Title = "Auto Acient 
 ToggleScamer:OnChanged(function(Value)
     _G.ToggleScamer = Value
 end)
-local DropdownIsland = Tabs.Raid:AddDropdown("DropdownIsland",{
-    Title = "Dropdown",
-    Values = {""},
-    Multi = false,
-    Default = 1,
-})
-local ToggleIsland = Tabs.Raid:AddToggle("ToggleIsland", {Title = "Teleport", Default = false })
-ToggleIsland:OnChanged(function(Value)
-    _G.TeleportIsland = Value
-end)
-
