@@ -477,24 +477,11 @@ local SelectedPly = Tabs.Raid:AddDropdown("SelectedPly", {
 
 local ToggleQuanSat = Tabs.Raid:AddToggle("ToggleQuanSat", {Title = "Spectate Player", Default = false })
 ToggleQuanSat:OnChanged(function(Value)
-    SpectatePlys = Value
-    local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
-    local plr2 = game:GetService("Players"):FindFirstChild(_G.SelectPly)
-    repeat wait(.1)
-        game:GetService("Workspace").Camera.CameraSubject = game:GetService("Players"):FindFirstChild(_G.SelectPly).Character.Humanoid
-    until SpectatePlys == false 
-    game:GetService("Workspace").Camera.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
-end)
-
+	end)
 local ToggleTeleport = Tabs.Raid:AddToggle("ToggleTeleport", {Title = "Teleport To Player", Default = false })
 ToggleTeleport:OnChanged(function(Value)
     _G.TeleportPly = Value
-    pcall(function()
-        if _G.TeleportPly then
-            repeat Tween(game:GetService("Players")[_G.SelectPly].Character.HumanoidRootPart.CFrame) wait() until _G.TeleportPly == false
-        end
     end)
-end)
 
 local DropdownIsland = Tabs.Race:AddDropdown("DropdownIsland",{
     Title = "Dropdown",
@@ -518,68 +505,6 @@ Tabs.Misc:AddButton({
 		Hop()
 	end
 })
-
-function Hop()
-	local PlaceID = game.PlaceId
-	local AllIDs = {}
-	local foundAnything = ""
-	local actualHour = os.date("!*t").hour
-	local Deleted = false
-	function TPReturner()
-		local Site;
-		if foundAnything == "" then
-			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-		else
-			Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-		end
-		local ID = ""
-		if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-			foundAnything = Site.nextPageCursor
-		end
-		local num = 0;
-		for i,v in pairs(Site.data) do
-			local Possible = true
-			ID = tostring(v.id)
-			if tonumber(v.maxPlayers) > tonumber(v.playing) then
-				for _,Existing in pairs(AllIDs) do
-					if num ~= 0 then
-						if ID == tostring(Existing) then
-							Possible = false
-						end
-					else
-						if tonumber(actualHour) ~= tonumber(Existing) then
-							local delFile = pcall(function()
-								AllIDs = {}
-								table.insert(AllIDs, actualHour)
-							end)
-						end
-					end
-					num = num + 1
-				end
-				if Possible == true then
-					table.insert(AllIDs, ID)
-					wait()
-					pcall(function()
-						wait()
-						game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-					end)
-					wait(4)
-				end
-			end
-		end
-	end
-	function Teleport() 
-		while wait() do
-			pcall(function()
-				TPReturner()
-				if foundAnything ~= "" then
-					TPReturner()
-				end
-			end)
-		end
-	end
-	Teleport()
-end      
 
 Tabs.Misc:AddButton({
 	Title = "Devil Shop",
@@ -629,19 +554,7 @@ Tabs.Misc:AddButton({
 	Title = "Rain Fruit",
 	Description = "Rain fruit (Fake)",
 	Callback = function()
-        for i, v in pairs(game:GetObjects("rbxassetid://15970729030")[1]:GetChildren()) do
-            v.Parent = game.Workspace.Map
-            v:MoveTo(game.Players.LocalPlayer.Character.PrimaryPart.Position + Vector3.new(math.random(-50, 50), 100, math.random(-50, 50)))
-            if v.Fruit:FindFirstChild("AnimationController") then
-                v.Fruit:FindFirstChild("AnimationController"):LoadAnimation(v.Fruit:FindFirstChild("Idle")):Play()
-            end
-            v.Handle.Touched:Connect(function(otherPart)
-                if otherPart.Parent == game.Players.LocalPlayer.Character then
-                    v.Parent = game.Players.LocalPlayer.Backpack
-                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                end
-            end)
-        end
+
 	end
 })
 
@@ -675,7 +588,7 @@ Tabs.Race:AddButton({
     Title = "Lever Pull",
     Description = "",
     Callback = function()
-        Tween2(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
+        
     end
 })
 
@@ -684,38 +597,14 @@ Tabs.Race:AddButton({
     Title = "Acient One",
     Description = "",
     Callback = function()
-        Tween2(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
+     
     end
 })
-
-
-local Mastery = Tabs.Race:AddSection("Auto Race")
-
 
 Tabs.Race:AddButton({
     Title = "Race Door",
     Description = "",
     Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875) 
-        wait(0.1)
-           Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875) 
-           wait(0.1)
-              Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875) 
-              wait(0.1)
-                 Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875) 
-            wait(0.5)
-                    if game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-                    Tween2(CFrame.new(29221.822265625, 14890.9755859375, -205.99114990234375))
-                    elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-                    Tween2(CFrame.new(28960.158203125, 14919.6240234375, 235.03948974609375))
-                    elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
-                    Tween2(CFrame.new(28231.17578125, 14890.9755859375, -211.64173889160156))
-                    elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
-                    Tween2(CFrame.new(28502.681640625, 14895.9755859375, -423.7279357910156))
-                    elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Ghoul" then
-                    Tween2(CFrame.new(28674.244140625, 14890.6767578125, 445.4310607910156))
-                    elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-                    Tween2(CFrame.new(29012.341796875, 14890.9755859375, -380.1492614746094))
-                    end
+        
     end
 })
