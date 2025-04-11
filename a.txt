@@ -531,7 +531,7 @@ end)
 
 local DropdownFruit = Tabs.Fruit:AddDropdown("DropdownFruit", {
     Title = "Dropdown",
-    Values = Table_DevilFruitSniper,
+    Values = {""},
     Multi = false,
     Default = 1,
 })
