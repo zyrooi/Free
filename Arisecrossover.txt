@@ -1,0 +1,523 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Solitude Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=103635972484891&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=103635972484891&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 58, 0, 58)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = false
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Ui/refs/heads/main/Darkrai%20Ui%20(2).txt", true))()
+
+local Library = DarkraiX:Window("Solitute Hub","","",Enum.KeyCode.LeftControl);
+
+Info = Library:Tab("☄️ Info ☄️")
+Shop = Library:Tab("☄️ General ☄️")
+Farm = Library:Tab("☄️ Farming ☄️")
+Teleport = Library:Tab("☄️ Teleport ☄️")
+Castle = Library:Tab("☄️ Castle ☄️")
+
+local function teleportTo(position)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    if character then
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        for i = 1, 15 do
+            humanoidRootPart.CFrame = CFrame.new(position)
+            task.wait(0.1)
+        end
+    end
+end
+
+Teleport:Button("Teleport To Winter Raid", function()
+    teleportTo(Vector3.new(4559.435546875, 27.50836181640625, -1952.9661865234375))
+end)
+
+Teleport:Button("Teleport To BCWorld", function()
+    teleportTo(Vector3.new(198.333984375, 38.70767593383789, 4296.1123046875))
+end)
+
+Teleport:Button("Teleport To DBWorld", function()
+    teleportTo(Vector3.new(-6295.892578125, 27.198102951049805, -73.71493530273438))
+end)
+
+Teleport:Button("Teleport To OPWorld", function()
+    teleportTo(Vector3.new(-2851.10498046875, 49.399234771728516, -2011.3995361328125))
+end)
+
+Teleport:Button("Teleport To NarutoWorld", function()
+    teleportTo(Vector3.new(-3380.243408203125, 30.260480880737305, 2257.260009765625))
+end)
+
+Teleport:Button("Teleport To JojoWorld", function()
+    teleportTo(Vector3.new(4816.3173828125, 29.942338943481445, -120.23005676269531))
+end)
+
+Teleport:Button("Teleport To BleachWorld", function()
+    teleportTo(Vector3.new(2641.796875, 45.4265251159668, -2645.07861328125))
+end)
+
+Teleport:Button("Teleport To ChainSawWorld", function()
+    teleportTo(Vector3.new(236.93052673339844, 32.89609146118164, -4301.60546875))
+end)
+
+Teleport:Button("Teleport To SoloWorld", function()
+    teleportTo(Vector3.new(577.9666748046875, 28.4345760345459, 261.4472351074219))
+end)
+
+Teleport:Button("Teleport To DedulWorld", function()
+    teleportTo(Vector3.new(3955.16357421875, 59.14646911621094, 3219.61572265625))
+end)
+
+Teleport:Line()
+
+Info:Seperator("☄️ Info Admin ☄️")
+Info:Button("Face Admin",function()
+ setclipboard("https://www.facebook.com/share/1JFiVwH5Zi/");
+end)
+Info:Seperator("☄️ Discord ☄️")
+Info:Button("Server Discord",function()
+ setclipboard("https://discord.gg/Rj5bBWGC");
+end)
+Info:Seperator("☄️ Verison ☄️")
+Info:Button("Arise Crossover - Free",function()
+end)
+Info:Button("Expired - 15Day",function()
+end
+
+
+Tab1:Seperator("👆🏻 Click Skip GamePass 👆🏻")
+
+Tab1:Toggle("Auto Click", false, function(value)
+    while value do
+        task.wait(1)
+game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0) 
+task.wait()
+game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+    end
+end)
+Tab1:Seperator("👆🏻 Farm Mob Boss 👆🏻")
+Tab1:Toggle("Auto Farm Luryu", false, function(value)
+    _G.ToggleMove = value
+    task.spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        local positions = {
+            Vector3.new(2856.60791015625, 45.4265251159668, -2606.3017578125),
+            
+        }
+
+        while value and _G.ToggleMove do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMove then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(10)
+            end
+            task.wait(0.1)
+        end
+    end)
+end)
+Tab1:Toggle("Auto Farm Heaven", false, function(value)
+    _G.ToggleMogve = value
+    task.spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        local positions = {
+            Vector3.new(160.04052734375, 32.89609146118164, -4341.4755859375),        
+
+        }
+
+        while value and _G.ToggleMogve do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMogve then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(10)
+            end
+            task.wait(0.1)
+        end
+    end)
+end)
+Tab1:Toggle("Auto Farm Anderz", false, function(value)
+    _G.ToggleAnder = value
+    task.spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        local positions = {
+            Vector3.new(248.32293701171875, 28.08351707458496, 300.119140625),        
+
+        }
+
+        while value and _G.ToggleAnder do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleAnder then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(10)
+            end
+            task.wait(0.1)
+        end
+    end)
+end)
+Tab1:Toggle("Auto Farm Longin", false, function(value)
+    _G.ToggleLong = value
+    task.spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+        local positions = {
+             Vector3.new(353.7384948730469, 28.812923431396484,14.459474563598633),        
+      
+
+        }
+        while value and _G.ToggleLong do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleLong then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(10)
+            end
+            task.wait(0.1)
+        end
+    end)
+end)
+Tab1:Seperator("👆🏻 Farm Mob Not Boss 👆🏻")
+Tab1:Toggle("Farm All Mob (Beta)", false, function(value)
+    _G.ToggleMovev2 = value
+    spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+
+        local positions = {
+            Vector3.new(620.3442993164062, 28.08351707458496, 137.6331329345703),
+            Vector3.new(587.189208984375, 28.08351707458496, 101.5678482055664),
+            Vector3.new(557.86328125, 28.43456268310547, 156.2022705078125),
+        }
+
+        while _G.ToggleMovev2 do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMovev2 then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleMovev2 then break end
+                task.wait(10)
+            end
+        end
+    end)
+end)
+
+Tab1:Toggle("Auto Farm Gonshee", false, function(value)
+    _G.Autogay = value
+    spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+
+        local positions = {
+            Vector3.new(388.3311462402344, 28.08351707458496, 120.54840087890625),
+            Vector3.new(408.7129821777344, 28.774564743041992, 79.71439361572266),
+            Vector3.new(425.4246826171875, 28.794658660888672, 11.996100425720215),
+            Vector3.new(291.1810302734375, 28.588546752929688, 53.70823287963867),
+        }
+
+        while _G.Autogay do
+            for _, pos in ipairs(positions) do
+                if not _G.Autogay then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.Autogay then break end
+                task.wait(10)
+            end
+        end
+    end)
+end)
+
+Tab1:Toggle("Auto Farm Deak", false, function(value)
+    _G.ToggleMoveskiidi = value
+    spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+
+        local positions = {
+            Vector3.new(112.2842788696289, 28.304746627807617, 75.8811950683593877),
+            Vector3.new(-85.9753189086914, 28.903865814208984, 339.611572265625),
+            Vector3.new(81.25894165039062, 28.904401779174805, 246.1920166015625),
+            Vector3.new(34.57532501220703, 28.279478073120117, 222.36753845214844),
+        }
+
+        while _G.ToggleMoveskiidi do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMoveskiidi then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 340
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleMoveskiidi then break end
+                task.wait(20)
+            end
+        end
+    end)
+end)
+
+Tab1:Toggle("Auto Farm Sortudo", false, function(value)
+    _G.Sortudo = value
+    spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+
+        local positions = {
+            Vector3.new(145.56985473632812, 38.282203674316406, 4451.96923828125),
+            Vector3.new(106.3490219116211, 37.8531494140625, 4435.88037109375),
+            Vector3.new(160.12547302246094, 37.853145599365234, 4397.5590820312517),
+        }
+
+        while _G.Sortudo do
+            for _, pos in ipairs(positions) do
+                if not _G.Sortudo then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 340
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.Sortudo then break end
+                task.wait(20)
+            end
+        end
+    end)
+end)
+
+Tab1:Toggle("Auto Farm Turtle", false, function(value)
+    _G.ToggleFarmSkobsi = value
+    spawn(function()
+        local TweenService = game:GetService("TweenService")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local hrp = character:WaitForChild("HumanoidRootPart")
+
+        local positions = {
+            Vector3.new(-6335.6513671875, 27.198102951049805, 99.88085174560547),
+            Vector3.new(-6380.3818359375, 27.198104858398438, -46.96369552612305),
+            Vector3.new(-6425.93408203125, 27.198102951049805, -98.61336517333984),
+            Vector3.new(-6482.87744140625, 27.198104858398438, -49.096038818359375),
+        }
+
+        while _G.ToggleFarmSkobsi do
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleFarmSkobsi then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleFarmSkobsi then break end
+            end
+        end
+    end)
+end)
+Tab1:Seperator("👆🏻 Dungeon 👆🏻")
+Tab1:Toggle("Auto Farm Dungeon", false, function(value)
+    while value do
+        local positions = {
+            Vector3.new(-416.3499755859375, 969.1255493164062, -524.7049560546875),
+            Vector3.new(-435.8135681152344, 969.1255493164062, -464.21337890625),
+            Vector3.new(-425.0841064453125, 969.1255493164062, -410.3213806152344),
+            Vector3.new(-334.669189453125, 982.4393310546875, -424.16314697265625),
+            Vector3.new(-291.9107971191406, 982.4393310546875, -488.13360595703125),
+            Vector3.new(-247.34140014648438, 982.4385986328125, -506.4607849121094),
+            Vector3.new(-160.40003967285156, 969.1255493164062, -509.3514099121094),
+            Vector3.new(-138.29800415039062, 969.1255493164062, -466.7206726074219),
+        }
+        for _, pos in pairs(positions) do
+            local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+            local dist = (hrp.Position - pos).Magnitude
+            game:GetService("TweenService"):Create(hrp, TweenInfo.new(dist / 300, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)}):Play()
+            task.wait(dist / 300 + 0.5)
+        end
+    end
+end)
+
+Tab1:Toggle("Auto Farm Winter Raid", false, function(value)
+    while value do
+        local pos = Vector3.new(4559.435546875, 27.50836181640625, -1952.9661865234375)
+        local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local dist = (hrp.Position - pos).Magnitude
+        game:GetService("TweenService"):Create(hrp, TweenInfo.new(dist / 1000, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)}):Play()
+        task.wait(dist / 1000 + 0.5)
+    end
+end)
+Tab1:Toggle("Rank Test", false, function(value)
+    while value do
+        task.wait(1)
+    end
+end)
+
+Tab1:Button("Join Dungeon", function()
+    -- Logic để vào Dungeon
+end)
+Tab1:Seperator("👆🏻 Beru 👆🏻")
+Tab1:Toggle("Auto Farm Beru", false, function(value)
+    while value do
+        local pos = Vector3.new(3859.815673828125, 60.121681213378906, 3074.082275390625)
+        local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local dist = (hrp.Position - pos).Magnitude
+        game:GetService("TweenService"):Create(hrp, TweenInfo.new(dist / 300, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)}):Play()
+        task.wait(dist / 300 + 0.5)
+    end
+end)
+
+Tab1:Toggle("Auto Farm Beru Hop", false, function(value)
+    while value do
+        -- Thêm logic nếu bạn có tọa độ cụ thể
+        task.wait(1)
+    end
+end)
+Tab1:Line()
+Shop:Seperator("📜 Shop And Weapon 📜")
+Shop:Dropdown("Dropdown", {"E", "B", "D", "A", "C"}, function(value)
+end)
+
+Shop:Toggle("Auto Sell Shadow", false, function(value)
+    _G.ToggleKidandgae = value
+end)
+
+Shop:Toggle("Auto Sell Weapon", false, function(value)
+    _G.ToggleGay = value
+end)
+
+Shop:Input("Name Weapon", "Default", function(value)
+end)
+
+Shop:Button("Dupe Weapon", function()
+end)
+
+Shop:Dropdown("Choosr Weapon", {""}, function(value)
+end)
+
+Shop:Dropdown("Choose Tier", {"E", "B", "D", "A", "C"}, function(value)
+end)
+
+Shop:Toggle("Auto Update", false, function(value)
+    _G.Kbdbdbeb = value
+end)
+
+Shop:Toggle("Buy Missing", false, function(value)
+    _G.ToggleNuysing = value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(540.4039916992188, 28.08351707458496, 247.45452880859375),
+    }
+
+    while task.wait(0.1) do
+        if _G.ToggleNuysing then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleNuysing then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleNuysing then break end
+                task.wait(0)
+            end
+        end
+    end
+end)
+Shop:Line()
+Castle:Seperator("📜 Castle 📜")
+Castle:Toggle("Auto Inferno Castle", false, function(Value)
+    while Value do
+        task.wait(1)
+    end
+end)
+
+Castle:Toggle("Auto Join Floor 25 Castle", false, function(Value)
+    while Value do
+        task.wait(1)
+    end
+end)
+
+Castle:Dropdown("Select Type", {"Tick", "Gems"}, function(Value)
+end)
+
+Castle:Toggle("Auto Buy Castle Tick", false, function(Value)
+    while Value do
+        task.wait(1)
+    end
+end)
+
+Castle:Toggle("Auto Leave", false, function(Value)
+    while Value do
+        task.wait(1)
+    end
+end)
+Castle:Line()
