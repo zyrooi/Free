@@ -1,3 +1,4 @@
+if game.GameId == 7074860883 then
 game.StarterGui:SetCore("SendNotification", {
     Title = "Solitude Hub",
     Text = "Success Loading",
@@ -521,3 +522,6 @@ Castle:Toggle("Auto Leave", false, function(Value)
     end
 end)
 Castle:Line()
+else
+game.Players.LocalPlayer:Kick("[ Not Support ]")
+end
