@@ -1,0 +1,38 @@
+local PremiumKeys = {
+    "njzhh2qib8qjpbszvo7wao346p496mitpcm",
+}
+
+local BlacklistKeys = {
+    "abc123",
+    "badkey456",
+    "xyz789"
+}
+
+local function isPremiumKey(key)
+    for _, v in ipairs(PremiumKeys) do
+        if v == key then
+            return true
+        end
+    end
+    return false
+end
+
+local function isBlacklisted(key)
+    for _, v in ipairs(BlacklistKeys) do
+        if v == key then
+            return true
+        end
+    end
+    return false
+end
+
+if not getgenv().key or isBlacklisted(getgenv().key) then
+    game:GetService("Players").LocalPlayer:Kick("Key Is Blacklist")
+    return
+end
+
+if isPremiumKey(getgenv().key) then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zyrooi/Free/refs/heads/main/Arisecrossover.txt"))()
+else
+    game:GetService("Players").LocalPlayer:Kick("Invalid Key")
+end
