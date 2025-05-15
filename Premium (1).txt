@@ -50,7 +50,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "Kaiser Hub [ Premium ]",
+    Title = "Kaiser Hub [ Free ]",
     SubTitle = "By Ziugpro",
     TabWidth = 145,
     Size = UDim2.fromOffset(505, 355),
@@ -61,13 +61,7 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Local = Window:AddTab({ Title = "Tab Location and Castle", Icon = "" }),
-Event = Window:AddTab({ Title = "Tab Event", Icon = "" }),
-    Main = Window:AddTab({ Title = "Tab Farm and Dungeon", Icon = "" }),
-Main2 = Window:AddTab({ Title = "Tab Spam Click", Icon = "" }),
     Shop = Window:AddTab({ Title = "Tab Shop and Weapon", Icon = "" }),
-    Click = Window:AddTab({ Title = "Tab Click and KeyBind", Icon = "" }),
-Config = Window:AddTab({ Title = "Tab Config", Icon = "" }),
-    Web = Window:AddTab({ Title = "Tab Webhook and Server", Icon = "" }),
 Info = Window:AddTab({ Title = "Tab Info Admin", Icon = "" }),
     
 }
@@ -170,25 +164,12 @@ local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
     Default = 1,
 })
 
-local ToggleProkeu = Tabs.Main:AddToggle("ToggleProkeu", {Title = "Auto Click Keybind ( Beta )", Description = "This feature is under development and currently has many bugs", Default = false})
+local ToggleProkeu = Tabs.Main:AddToggle("ToggleProkeu", {Title = "Auto Click Keybind [ Premium ]", Description = "This feature is under development and currently has many bugs", Default = false})
 ToggleProkeu:OnChanged(function(Value)
     _G.ToggleProkeu = Value
 end)
 
-spawn(function()
-    while task.wait(1) do
-        if _G.ToggleProkeu then
-            local selectedKeybind = Dropdown:GetSelected()
-            if selectedKeybind and Enum.KeyCode[selectedKeybind] then
-                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode[selectedKeybind], false, game)
-                task.wait(0.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode[selectedKeybind], false, game)
-            end
-        end
-    end
-end)
-
-local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Auto Click", Default = false})
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Auto Click [ Premium ]", Default = false})
 TogglePro:OnChanged(function(Value)
     _G.TogglePro = Value
 end)
