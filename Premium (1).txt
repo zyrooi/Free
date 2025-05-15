@@ -1,0 +1,2124 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Kaiser Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=135702171440429&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Kaiser Hub",
+    Text = "Load Config ?",
+    Icon = "rbxthumb://type=Asset&id=135702171440429&w=420&h=420",
+    Duration = 5,
+    Button1 = "Yes",
+    Callback = function()
+SaveManager:LoadAutoloadConfig()
+    end
+})
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = false
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 58, 0, 58)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Kaiser Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 145,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Local = Window:AddTab({ Title = "Tab Location and Castle", Icon = "" }),
+Event = Window:AddTab({ Title = "Tab Event", Icon = "" }),
+    Main = Window:AddTab({ Title = "Tab Farm and Dungeon", Icon = "" }),
+Main2 = Window:AddTab({ Title = "Tab Spam Click", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Tab Shop and Weapon", Icon = "" }),
+    Click = Window:AddTab({ Title = "Tab Click and KeyBind", Icon = "" }),
+Config = Window:AddTab({ Title = "Tab Config", Icon = "" }),
+    Web = Window:AddTab({ Title = "Tab Webhook and Server", Icon = "" }),
+Info = Window:AddTab({ Title = "Tab Info Admin", Icon = "" }),
+    
+}
+local function teleportTo(position)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    if character then
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        for i = 1, 15 do
+            humanoidRootPart.CFrame = CFrame.new(position)
+            task.wait(0.1)
+        end
+    end
+end
+Tabs.Local:AddButton({
+	Title = "Teleport To Winter Raid",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(4559.435546875, 27.50836181640625, -1952.9661865234375))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To BCWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(198.333984375, 38.70767593383789, 4296.1123046875))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To DBWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(-6295.892578125, 27.198102951049805, -73.71493530273438))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To OPWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(-2851.10498046875, 49.399234771728516, -2011.3995361328125))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To NarutoWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(-3380.243408203125, 30.260480880737305, 2257.260009765625))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To JojoWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(4816.3173828125, 29.942338943481445, -120.23005676269531))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To BleachWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(2641.796875, 45.4265251159668, -2645.07861328125))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To ChainSawWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(236.93052673339844, 32.89609146118164, -4301.60546875))
+	end
+})
+
+Tabs.Local:AddButton({
+	Title = "Teleport To SoloWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(577.9666748046875, 28.4345760345459, 261.4472351074219))
+	end
+})
+Tabs.Local:AddButton({
+	Title = "Teleport To DedulWorld",
+	Description = "",
+	Callback = function()
+        teleportTo(Vector3.new(3955.16357421875, 59.14646911621094, 3219.61572265625))
+	end
+})
+                    
+local keybind = {"B", "V", "M", "C", "E", "R"}
+
+local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+    Title = "Select Keybind",
+    Values = keybind,
+    Multi = false,
+    Default = 1,
+})
+
+local ToggleProkeu = Tabs.Main:AddToggle("ToggleProkeu", {Title = "Auto Click Keybind ( Beta )", Description = "This feature is under development and currently has many bugs", Default = false})
+ToggleProkeu:OnChanged(function(Value)
+    _G.ToggleProkeu = Value
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.ToggleProkeu then
+            local selectedKeybind = Dropdown:GetSelected()
+            if selectedKeybind and Enum.KeyCode[selectedKeybind] then
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode[selectedKeybind], false, game)
+                task.wait(0.1)
+                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode[selectedKeybind], false, game)
+            end
+        end
+    end
+end)
+
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Auto Click", Default = false})
+TogglePro:OnChanged(function(Value)
+    _G.TogglePro = Value
+end)
+
+spawn(function()
+    while task.wait() do
+        if _G.TogglePro then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+            task.wait()
+        end
+    end
+end)
+local ToggleProNrobro = Tabs.Main:AddToggle("ToggleProNrobro", {Title = "Auto Click 0.9s ( Neft )", Default = false})
+ToggleProNrobro:OnChanged(function(Value)
+    _G.ToggleProNrobro = Value
+end)
+
+spawn(function()
+    while task.wait(0.9) do
+        if _G.ToggleProNrobro then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local toggleComl = Tabs.Main:AddToggle("toggleComl", {Title = "Auto Arise", Description = "This feature is currently undergoing testing and is still in development, so you may encounter numerous bugs or unexpected behaviors during use", Default = false})
+
+toggleComl:OnChanged(function(Value)
+    _G.toggleComl = Value
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.toggleComl then
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+            game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+        end
+    end
+end)
+local toggleCommml = Tabs.Main:AddToggle("toggleCommml", {Title = "Auto Comlect ( Premium )", Description = "This feature is currently undergoing testing and is still in development, so you may encounter numerous bugs or unexpected behaviors during use", Default = false})
+
+toggleCommml:OnChanged(function(Value)
+    _G.toggleCommml = Value
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.toggleCommml then
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.R, false, game)
+            game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.R, false, game)
+        end
+    end
+end)
+local locations = {
+    ["Luryu"] = Vector3.new(2856.60791015625, 45.4265251159668, -2606.3017578125),
+    ["Heaven"] = Vector3.new(160.04052734375, 32.89609146118164, -4341.4755859375),        
+    ["Anders"] = Vector3.new(248.32293701171875, 28.08351707458496, 300.119140625),        
+    ["Longln"] = Vector3.new(353.7384948730469, 28.812923431396484,14.459474563598633),        
+}
+
+local Dropdown = Tabs.Main:AddDropdown("SelectLocation", {
+    Title = "Select Mob",
+    Values = {"Heaven", "Luryu", "Anders", "Longln"},
+    Multi = false,
+    Default = 1,
+})
+
+local ToggleTP = Tabs.Main:AddToggle("ToggleTP", {Title = "Auto Farm", Default = false})
+ToggleTP:OnChanged(function(Value)
+    _G.ToggleTP = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    while task.wait(0.1) do
+        if _G.ToggleTP then
+            local pos = locations[Dropdown.Value]
+            local hrp = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if pos and hrp then
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+            end
+        end
+    end
+end)
+
+
+local ToggksdhleMove = Tabs.Main:AddToggle("ToggksdhleMove", {Title = "Auto Farm All Mob v2", Description = "Farm Super Fast Without Errors And This Feature Is Completed", Default = false})
+ToggksdhleMove:OnChanged(function(Value)
+    _G.ToggksdhleMove = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+                Vector3.new(620.3442993164062, 28.08351707458496, 137.6331329345703),
+                Vector3.new(587.189208984375, 28.08351707458496, 101.5678482055664),
+                Vector3.new(557.86328125, 28.43456268310547, 156.2022705078125),
+            }
+    while task.wait(0) do
+        if _G.ToggksdhleMove then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggksdhleMove then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 430
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait(10)
+                if not _G.ToggksdhleMove then break end
+            end
+        end
+    end
+end)
+local ToggleMovev2 = Tabs.Main:AddToggle("ToggleMovev2", {Title = "Farm All Mob ( Beta )", Default = false})
+ToggleMovev2:OnChanged(function(Value)
+    _G.ToggleMovev2 = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+                Vector3.new(620.3442993164062, 28.08351707458496, 137.6331329345703),
+                Vector3.new(587.189208984375, 28.08351707458496, 101.5678482055664),
+                Vector3.new(557.86328125, 28.43456268310547, 156.2022705078125),
+            }
+    while task.wait(0.1) do
+        if _G.ToggleMovev2 then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMovev2 then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleMovev2 then break end
+                task.wait(10)
+            end
+        end
+    end
+end)
+local Autogay = Tabs.Main:AddToggle("Autogay", {Title = "Auto Farm Gonshee", Default = false})
+Autogay:OnChanged(function(Value)
+    _G.Autogay = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(388.3311462402344, 28.08351707458496, 120.54840087890625),
+        Vector3.new(408.7129821777344, 28.774564743041992, 79.71439361572266),
+        Vector3.new(425.4246826171875, 28.794658660888672, 11.996100425720215),
+      Vector3.new(291.1810302734375, 28.588546752929688, 53.70823287963867),
+    }
+
+    while task.wait(0.1) do
+        if _G.Autogay then
+            for _, pos in ipairs(positions) do
+                if not _G.Autogay then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.Autogay then break end
+                task.wait(10)
+            end
+        end
+    end
+end)
+local ToggleMoveskiidi = Tabs.Main:AddToggle("ToggleMoveskiidi", {Title = "Auto Farm Deak", Default = false})
+ToggleMoveskiidi:OnChanged(function(Value)
+    _G.ToggleMoveskiidi = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(112.2842788696289, 28.304746627807617, 75.8811950683593877),
+        Vector3.new(-85.9753189086914, 28.903865814208984, 339.611572265625),
+        Vector3.new(81.25894165039062, 28.904401779174805, 246.1920166015625),
+        Vector3.new(34.57532501220703, 28.279478073120117, 222.36753845214844),
+    }
+
+    while task.wait(0.1) do
+        if _G.ToggleMoveskiidi then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMoveskiidi then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 340
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleMoveskiidi then break end
+                task.wait(20)
+            end
+        end
+    end
+end)
+local Sortudo = Tabs.Main:AddToggle("Sortudo", {Title = "Auto Farm Sortudo", Default = false})
+Sortudo:OnChanged(function(Value)
+    _G.Sortudo = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(145.56985473632812, 38.282203674316406, 4451.96923828125),
+        Vector3.new(106.3490219116211, 37.8531494140625, 4435.88037109375),
+        Vector3.new(160.12547302246094, 37.853145599365234, 4397.5590820312517),
+        
+}
+
+    while task.wait(0.1) do
+        if _G.Sortudo then
+            for _, pos in ipairs(positions) do
+                if not _G.Sortudo then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 340
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.Sortudo then break end
+                task.wait(20)
+            end
+        end
+    end
+end)
+local ToggleFarmSkobsi = Tabs.Main:AddToggle("ToggleFarmSkobsi", {Title = "Auto Farm Turtle", Default = false})
+ToggleFarmSkobsi:OnChanged(function(Value)
+    _G.ToggleFarmSkobsi = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+Vector3.new(-6335.6513671875, 27.198102951049805, 99.88085174560547),
+        Vector3.new(-6380.3818359375, 27.198104858398438, -46.96369552612305),
+        Vector3.new(-6425.93408203125, 27.198102951049805, -98.61336517333984),
+        Vector3.new(-6482.87744140625, 27.198104858398438, -49.096038818359375),
+    }
+
+    while task.wait(10) do
+        if _G.ToggleFarmSkobsi then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleFarmSkobsi then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleFarmSkobsi then break end
+            end
+        end
+    end
+end)
+local ToggleMoveDungeton = Tabs.Main:AddToggle("ToggleMoveDungeton", {Title = "Auto Farm Dungeon", Default = false})
+ToggleMoveDungeton:OnChanged(function(Value)
+    _G.ToggleMoveDungeton = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    while task.wait(0.1) do
+        if _G.ToggleMoveDungeton then
+            local closestMob, shortestDistance = nil, math.huge
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("Model") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                    local dist = (hrp.Position - v.HumanoidRootPart.Position).Magnitude
+                    if dist < shortestDistance then
+                        shortestDistance = dist
+                        closestMob = v
+                    end
+                end
+            end
+
+            if closestMob then
+                local mobPos = closestMob.HumanoidRootPart.Position + Vector3.new(0, 5, 0) -- bay lơ lửng
+                local distance = (hrp.Position - mobPos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(mobPos)})
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(0.5)
+            end
+        end
+    end
+end)
+Tabs.Main:AddButton({
+	Title = "Join Dungeon",
+	Description = "",
+	Callback = function()
+   end
+})
+local ToggleRank = Tabs.Main:AddToggle("ToggleRankq", {Title = "Rank Test", Default = false })
+ToggleRank:OnChanged(function(Value)
+    _G.ToggleRank = Value
+end)
+local ToggleMoveRaidG = Tabs.Main:AddToggle("ToggleMoveRaidG", {Title = "Auto Farm Winter Raid", Default = false})
+ToggleMoveRaidG:OnChanged(function(Value)
+    _G.ToggleMoveRaidG = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(4559.435546875, 27.50836181640625, -1952.9661865234375),
+        
+    }
+
+    while task.wait(0.1) do
+        if _G.ToggleMoveRaidG then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMove then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 1000
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleMoveRaidG then break end
+                task.wait(10)
+            end
+        end
+    end
+end)
+local GayToggle = Tabs.Main:AddToggle("GayToggle", {Title = "Auto Farm Beru", Default = false})
+GayToggle:OnChanged(function(Value)
+    _G.GayToggle = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(3859.815673828125, 60.121681213378906, 3074.082275390625),
+
+}
+
+    while task.wait(0.1) do
+        if _G.GayToggle then
+            for _, pos in ipairs(positions) do
+                if not _G.GayToggle then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.GayToggle then break end
+            end
+        end
+    end
+end)
+local Togglebbdo = Tabs.Main:AddToggle("Togglebbdo", {Title = "Auto Farm Beru Hop", Default = false })
+Togglebbdo:OnChanged(function(Value)
+    _G.Togglebbdo = Value
+end)
+
+local ToggleProclick2 = Tabs.Click:AddToggle("ToggleProclick2", {Title = "Auto Click V-3", Default = false})
+ToggleProclick2:OnChanged(function(Value)
+    _G.ToggleProclick2 = Value
+end)
+
+spawn(function()
+    while task.wait(3) do
+        if _G.ToggleProclick2 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local ToggToggleProclick2lePro = Tabs.Click:AddToggle("ToggToggleProclick2lePro", {Title = "Auto Click V-4", Default = false})
+ToggToggleProclick2lePro:OnChanged(function(Value)
+    _G.ToggToggleProclick2lePro = Value
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.ToggToggleProclick2lePro then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local ToggleProv55 = Tabs.Click:AddToggle("ToggleProv55", {Title = "Auto Click Super Fast", Default = false})
+ToggleProv55:OnChanged(function(Value)
+    _G.ToggleProv55 = Value
+end)
+
+spawn(function()
+    while task.wait(-100000000) do
+        if _G.ToggleProv55 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local Dropdown = Tabs.Shop:AddDropdown("Dropdown", {
+        Title = "Choose Tier",
+        Values = {"E", "B", "D", "A", "C"},
+        Multi = false,
+        Default = 1,
+    })
+local ToggleKidandgae = Tabs.Shop:AddToggle("ToggleKidandgae", {Title = "Auto Sell Shadow", Default = false })
+ToggleKidandgae:OnChanged(function(Value)
+    _G.ToggleKidandgae = Value
+end)
+local ToggleGay = Tabs.Shop:AddToggle("ToggleGay", {Title = "Auto Sell Weapon", Default = false})
+ToggleGay:OnChanged(function(Value)
+    _G.ToggleGay = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(593.03759765625, 28.08351707458496, 188.5797882080078),
+        
+    }
+
+    while task.wait(0.1) do
+        if _G.ToggleGay then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleGay then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleGay then break end
+                task.wait(10)
+            end
+        end
+    end
+end)
+local Input = Tabs.Shop:AddInput("Input", {
+        Title = "Name Weapon",
+        Default = "Default",
+        Numeric = false,
+        Finished = false,
+        Placeholder = "",
+        Callback = function(Value)
+            
+        end
+    })
+Tabs.Shop:AddButton({
+	Title = "Dupe Weapon",
+	Description = "",
+	Callback = function()
+   end
+})
+local Dropdown = Tabs.Shop:AddDropdown("Drojjpdown", {
+        Title = "Choosr Weapon",
+        Values = {""},
+        Multi = false,
+        Default = 1,
+    })
+local Dropdown = Tabs.Shop:AddDropdown("Dropdkbown", {
+        Title = "Choose Tier",
+        Values = {"E", "B", "D", "A", "C"},
+        Multi = false,
+        Default = 1,
+    })
+local Kbdbdbeb = Tabs.Shop:AddToggle("Kbdbdbeb", {Title = "Auto Update", Default = false })
+Kbdbdbeb:OnChanged(function(Value)
+    _G.Kbdbdbeb = Value
+end)
+
+
+local ToggleNuysing = Tabs.Shop:AddToggle("ToggleNuysing", {Title = "Buy Missing", Default = false})
+ToggleNuysing:OnChanged(function(Value)
+    _G.ToggleNuysing = Value
+end)
+
+spawn(function()
+    local TweenService = game:GetService("TweenService")
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    local positions = {
+        Vector3.new(540.4039916992188, 28.08351707458496, 247.45452880859375),
+
+    }
+
+    while task.wait(0.1) do
+        if _G.ToggleNuysing then
+            for _, pos in ipairs(positions) do
+                if not _G.ToggleMove then break end
+                local distance = (hrp.Position - pos).Magnitude
+                local time = distance / 300
+                local tween = TweenService:Create(hrp, TweenInfo.new(time, Enum.EasingStyle.Linear), {CFrame = CFrame.new(pos)})
+                tween:Play()
+                tween.Completed:Wait()
+                if not _G.ToggleNuysing then break end
+                task.wait(0)
+            end
+        end
+    end
+end)
+local Input1 = Tabs.Web:AddInput("Input1", {
+    Title = "Webhook",
+    Default = "",
+    Numeric = false,
+    Finished = false,
+    Placeholder = "Link",
+    Callback = function(Value)
+        _G.Webhook = Value
+    end
+})
+
+local Input2 = Tabs.Web:AddInput("Input2", {
+    Title = "Channel Name",
+    Default = "",
+    Numeric = false,
+    Finished = false,
+    Placeholder = "Enter Your Channel",
+    Callback = function(Value)
+        _G.ChannelName = Value
+    end
+})
+
+local Slidemkr = Tabs.Web:AddSlider("Slidemkr", {
+    Title = "Time Hour",
+    Description = "Time Send Message Webhook",
+    Default = 12,
+    Min = 5,
+    Max = 72,
+    Rounding = 1,
+    Callback = function(Value)
+        _G.SendTime = Value
+    end
+})
+
+local ToggleProko1 = Tabs.Web:AddToggle("ToggleProko1", {
+    Title = "Find Beru",
+    Default = false
+})
+ToggleProko1:OnChanged(function(Value)
+    _G.FindBeru = Value
+end)
+
+local ToggleProko2 = Tabs.Web:AddToggle("ToggleProko2", {
+    Title = "Find Beru (Hop Server)",
+    Default = false
+})
+ToggleProko2:OnChanged(function(Value)
+    _G.FindBeruHop = Value
+end)
+
+local TogglePrTogglePro2mmo1 = Tabs.Web:AddToggle("TogglePrTogglePro2mmo1", {
+    Title = "Notification",
+    Description = "Send Number of Dame",
+    Default = false
+})
+TogglePrTogglePro2mmo1:OnChanged(function(Value)
+    _G.TogglePrTogglePro2mmo1 = Value
+end)
+
+local TogglePro2mm = Tabs.Web:AddToggle("TogglePro2mm", {
+    Title = "Notification",
+    Description = "Announces How Many Mobs You Have Killed",
+    Default = false
+})
+TogglePro2mm:OnChanged(function(Value)
+    _G.TogglePro2mm = Value
+end)
+
+local ToggleKeyE = Tabs.Click:AddToggle("ToggleKeyE", {Title = "Auto Keybind E", Default = false})
+ToggleKeyE:OnChanged(function(Value)
+    _G.ToggleKeyE = Value
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.ToggleKeyE then
+            game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
+                if not gpe and input.KeyCode == Enum.KeyCode.E then
+                end
+            end)
+        end
+    end
+end)
+local ToggleKeyR = Tabs.Click:AddToggle("ToggleKeyR", {Title = "Auto Keybind R", Default = false})
+ToggleKeyR:OnChanged(function(Value)
+    _G.ToggleKeyR = Value
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.ToggleKeyR then
+            game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
+                if not gpe and input.KeyCode == Enum.KeyCode.R then
+                end
+            end)
+        end
+    end
+end)
+local ToggleKeyA = Tabs.Click:AddToggle("ToggleKeyA", {Title = "Auto Keybind A", Default = false})
+ToggleKeyA:OnChanged(function(Value)
+    _G.ToggleKeyA = Value
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.ToggleKeyA then
+            game:GetService("UserInputService").InputBegan:Connect(function(input, gpe)
+                if not gpe and input.KeyCode == Enum.KeyCode.A
+then
+                end
+            end)
+        end
+    end
+end)
+local TogglePro1 = Tabs.Click:AddToggle("TogglePro1", {Title = "Auto Click 1", Default = false})
+TogglePro1:OnChanged(function(Value)
+    _G.TogglePro1 = Value
+end)
+
+spawn(function()
+    while task.wait(5) do
+        if _G.TogglePro1 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro2 = Tabs.Click:AddToggle("TogglePro2", {Title = "Auto Click 2", Default = false})
+TogglePro2:OnChanged(function(Value)
+    _G.TogglePro2 = Value
+end)
+
+spawn(function()
+    while task.wait(6) do
+        if _G.TogglePro2 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro3 = Tabs.Click:AddToggle("TogglePro3", {Title = "Auto Click 3", Default = false})
+TogglePro3:OnChanged(function(Value)
+    _G.TogglePro3 = Value
+end)
+
+spawn(function()
+    while task.wait(7) do
+        if _G.TogglePro3 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro4 = Tabs.Click:AddToggle("TogglePro4", {Title = "Auto Click 4", Default = false})
+TogglePro4:OnChanged(function(Value)
+    _G.TogglePro4 = Value
+end)
+
+spawn(function()
+    while task.wait(8) do
+        if _G.TogglePro4 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro5 = Tabs.Click:AddToggle("TogglePro5", {Title = "Auto Click 5", Default = false})
+TogglePro5:OnChanged(function(Value)
+    _G.TogglePro5 = Value
+end)
+
+spawn(function()
+    while task.wait(9) do
+        if _G.TogglePro5 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro6 = Tabs.Click:AddToggle("TogglePro6", {Title = "Auto Click 6", Default = false})
+TogglePro6:OnChanged(function(Value)
+    _G.TogglePro6 = Value
+end)
+
+spawn(function()
+    while task.wait(10) do
+        if _G.TogglePro6 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro7 = Tabs.Click:AddToggle("TogglePro7", {Title = "Auto Click 7", Default = false})
+TogglePro7:OnChanged(function(Value)
+    _G.TogglePro7 = Value
+end)
+
+spawn(function()
+    while task.wait(11) do
+        if _G.TogglePro7 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro8 = Tabs.Click:AddToggle("TogglePro8", {Title = "Auto Click 8", Default = false})
+TogglePro8:OnChanged(function(Value)
+    _G.TogglePro8 = Value
+end)
+
+spawn(function()
+    while task.wait(12) do
+        if _G.TogglePro8 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro9 = Tabs.Click:AddToggle("TogglePro9", {Title = "Auto Click 9", Default = false})
+TogglePro9:OnChanged(function(Value)
+    _G.TogglePro9 = Value
+end)
+
+spawn(function()
+    while task.wait(13) do
+        if _G.TogglePro9 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro10 = Tabs.Click:AddToggle("TogglePro10", {Title = "Auto Click 10", Default = false})
+TogglePro10:OnChanged(function(Value)
+    _G.TogglePro10 = Value
+end)
+
+spawn(function()
+    while task.wait(14) do
+        if _G.TogglePro10 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local TogglePro11 = Tabs.Click:AddToggle("TogglePro11", {Title = "Auto Click 11", Default = false})
+TogglePro11:OnChanged(function(Value)
+    _G.TogglePro11 = Value
+end)
+
+spawn(function()
+    while task.wait(2) do
+        if _G.TogglePro11 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro12 = Tabs.Click:AddToggle("TogglePro12", {Title = "Auto Click 12", Default = false})
+TogglePro12:OnChanged(function(Value)
+    _G.TogglePro12 = Value
+end)
+
+spawn(function()
+    while task.wait(3) do
+        if _G.TogglePro12 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro13 = Tabs.Click:AddToggle("TogglePro13", {Title = "Auto Click 13", Default = false})
+TogglePro13:OnChanged(function(Value)
+    _G.TogglePro13 = Value
+end)
+
+spawn(function()
+    while task.wait(4) do
+        if _G.TogglePro13 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro14 = Tabs.Click:AddToggle("TogglePro14", {Title = "Auto Click 14", Default = false})
+TogglePro14:OnChanged(function(Value)
+    _G.TogglePro14 = Value
+end)
+
+spawn(function()
+    while task.wait(5) do
+        if _G.TogglePro14 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro15 = Tabs.Click:AddToggle("TogglePro15", {Title = "Auto Click 15", Default = false})
+TogglePro15:OnChanged(function(Value)
+    _G.TogglePro15 = Value
+end)
+
+spawn(function()
+    while task.wait(6) do
+        if _G.TogglePro15 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro16 = Tabs.Click:AddToggle("TogglePro16", {Title = "Auto Click 16", Default = false})
+TogglePro16:OnChanged(function(Value)
+    _G.TogglePro16 = Value
+end)
+
+spawn(function()
+    while task.wait(7) do
+        if _G.TogglePro16 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro17 = Tabs.Click:AddToggle("TogglePro17", {Title = "Auto Click 17", Default = false})
+TogglePro17:OnChanged(function(Value)
+    _G.TogglePro17 = Value
+end)
+
+spawn(function()
+    while task.wait(8) do
+        if _G.TogglePro17 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro18 = Tabs.Click:AddToggle("TogglePro18", {Title = "Auto Click 18", Default = false})
+TogglePro18:OnChanged(function(Value)
+    _G.TogglePro18 = Value
+end)
+
+spawn(function()
+    while task.wait(9) do
+        if _G.TogglePro18 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro19 = Tabs.Click:AddToggle("TogglePro19", {Title = "Auto Click 19", Default = false})
+TogglePro19:OnChanged(function(Value)
+    _G.TogglePro19 = Value
+end)
+
+spawn(function()
+    while task.wait(10) do
+        if _G.TogglePro19 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro20 = Tabs.Click:AddToggle("TogglePro20", {Title = "Auto Click 20", Default = false})
+TogglePro20:OnChanged(function(Value)
+    _G.TogglePro20 = Value
+end)
+
+spawn(function()
+    while task.wait(11) do
+        if _G.TogglePro20 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local TogglePro21 = Tabs.Click:AddToggle("TogglePro21", {Title = "Auto Click 21", Default = false})
+TogglePro21:OnChanged(function(Value)
+    _G.TogglePro21 = Value
+end)
+spawn(function()
+    while task.wait(12) do
+        if _G.TogglePro21 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro22 = Tabs.Click:AddToggle("TogglePro22", {Title = "Auto Click 22", Default = false})
+TogglePro22:OnChanged(function(Value)
+    _G.TogglePro22 = Value
+end)
+spawn(function()
+    while task.wait(13) do
+        if _G.TogglePro22 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro23 = Tabs.Click:AddToggle("TogglePro23", {Title = "Auto Click 23", Default = false})
+TogglePro23:OnChanged(function(Value)
+    _G.TogglePro23 = Value
+end)
+spawn(function()
+    while task.wait(14) do
+        if _G.TogglePro23 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro24 = Tabs.Click:AddToggle("TogglePro24", {Title = "Auto Click 24", Default = false})
+TogglePro24:OnChanged(function(Value)
+    _G.TogglePro24 = Value
+end)
+spawn(function()
+    while task.wait(15) do
+        if _G.TogglePro24 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro25 = Tabs.Click:AddToggle("TogglePro25", {Title = "Auto Click 25", Default = false})
+TogglePro25:OnChanged(function(Value)
+    _G.TogglePro25 = Value
+end)
+spawn(function()
+    while task.wait(16) do
+        if _G.TogglePro25 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro26 = Tabs.Click:AddToggle("TogglePro26", {Title = "Auto Click 26", Default = false})
+TogglePro26:OnChanged(function(Value)
+    _G.TogglePro26 = Value
+end)
+spawn(function()
+    while task.wait(17) do
+        if _G.TogglePro26 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro27 = Tabs.Click:AddToggle("TogglePro27", {Title = "Auto Click 27", Default = false})
+TogglePro27:OnChanged(function(Value)
+    _G.TogglePro27 = Value
+end)
+spawn(function()
+    while task.wait(18) do
+        if _G.TogglePro27 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro28 = Tabs.Click:AddToggle("TogglePro28", {Title = "Auto Click 28", Default = false})
+TogglePro28:OnChanged(function(Value)
+    _G.TogglePro28 = Value
+end)
+spawn(function()
+    while task.wait(19) do
+        if _G.TogglePro28 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro29 = Tabs.Click:AddToggle("TogglePro29", {Title = "Auto Click 29", Default = false})
+TogglePro29:OnChanged(function(Value)
+    _G.TogglePro29 = Value
+end)
+spawn(function()
+    while task.wait(20) do
+        if _G.TogglePro29 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro30 = Tabs.Click:AddToggle("TogglePro30", {Title = "Auto Click 30", Default = false})
+TogglePro30:OnChanged(function(Value)
+    _G.TogglePro30 = Value
+end)
+spawn(function()
+    while task.wait(21) do
+        if _G.TogglePro30 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro31 = Tabs.Click:AddToggle("TogglePro31", {Title = "Auto Click 31", Default = false})
+TogglePro31:OnChanged(function(Value)
+    _G.TogglePro31 = Value
+end)
+spawn(function()
+    while task.wait(22) do
+        if _G.TogglePro31 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro32 = Tabs.Click:AddToggle("TogglePro32", {Title = "Auto Click 32", Default = false})
+TogglePro32:OnChanged(function(Value)
+    _G.TogglePro32 = Value
+end)
+spawn(function()
+    while task.wait(23) do
+        if _G.TogglePro32 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro33 = Tabs.Click:AddToggle("TogglePro33", {Title = "Auto Click 33", Default = false})
+TogglePro33:OnChanged(function(Value)
+    _G.TogglePro33 = Value
+end)
+spawn(function()
+    while task.wait(24) do
+        if _G.TogglePro33 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro34 = Tabs.Click:AddToggle("TogglePro34", {Title = "Auto Click 34", Default = false})
+TogglePro34:OnChanged(function(Value)
+    _G.TogglePro34 = Value
+end)
+spawn(function()
+    while task.wait(25) do
+        if _G.TogglePro34 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro35 = Tabs.Click:AddToggle("TogglePro35", {Title = "Auto Click 35", Default = false})
+TogglePro35:OnChanged(function(Value)
+    _G.TogglePro35 = Value
+end)
+spawn(function()
+    while task.wait(26) do
+        if _G.TogglePro35 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local TogglePro36 = Tabs.Click:AddToggle("TogglePro36", {Title = "Auto Click 36", Default = false})
+TogglePro36:OnChanged(function(Value)
+    _G.TogglePro36 = Value
+end)
+spawn(function()
+    while task.wait(36) do
+        if _G.TogglePro36 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro37 = Tabs.Click:AddToggle("TogglePro37", {Title = "Auto Click 37", Default = false})
+TogglePro37:OnChanged(function(Value)
+    _G.TogglePro37 = Value
+end)
+spawn(function()
+    while task.wait(37) do
+        if _G.TogglePro37 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro38 = Tabs.Click:AddToggle("TogglePro38", {Title = "Auto Click 38", Default = false})
+TogglePro38:OnChanged(function(Value)
+    _G.TogglePro38 = Value
+end)
+spawn(function()
+    while task.wait(38) do
+        if _G.TogglePro38 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro39 = Tabs.Click:AddToggle("TogglePro39", {Title = "Auto Click 39", Default = false})
+TogglePro39:OnChanged(function(Value)
+    _G.TogglePro39 = Value
+end)
+spawn(function()
+    while task.wait(39) do
+        if _G.TogglePro39 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro40 = Tabs.Click:AddToggle("TogglePro40", {Title = "Auto Click 40", Default = false})
+TogglePro40:OnChanged(function(Value)
+    _G.TogglePro40 = Value
+end)
+spawn(function()
+    while task.wait(40) do
+        if _G.TogglePro40 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro41 = Tabs.Click:AddToggle("TogglePro41", {Title = "Auto Click 41", Default = false})
+TogglePro41:OnChanged(function(Value)
+    _G.TogglePro41 = Value
+end)
+spawn(function()
+    while task.wait(41) do
+        if _G.TogglePro41 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro42 = Tabs.Click:AddToggle("TogglePro42", {Title = "Auto Click 42", Default = false})
+TogglePro42:OnChanged(function(Value)
+    _G.TogglePro42 = Value
+end)
+spawn(function()
+    while task.wait(42) do
+        if _G.TogglePro42 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro43 = Tabs.Click:AddToggle("TogglePro43", {Title = "Auto Click 43", Default = false})
+TogglePro43:OnChanged(function(Value)
+    _G.TogglePro43 = Value
+end)
+spawn(function()
+    while task.wait(43) do
+        if _G.TogglePro43 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro44 = Tabs.Click:AddToggle("TogglePro44", {Title = "Auto Click 44", Default = false})
+TogglePro44:OnChanged(function(Value)
+    _G.TogglePro44 = Value
+end)
+spawn(function()
+    while task.wait(44) do
+        if _G.TogglePro44 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro45 = Tabs.Click:AddToggle("TogglePro45", {Title = "Auto Click 45", Default = false})
+TogglePro45:OnChanged(function(Value)
+    _G.TogglePro45 = Value
+end)
+spawn(function()
+    while task.wait(45) do
+        if _G.TogglePro45 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro46 = Tabs.Click:AddToggle("TogglePro46", {Title = "Auto Click 46", Default = false})
+TogglePro46:OnChanged(function(Value)
+    _G.TogglePro46 = Value
+end)
+spawn(function()
+    while task.wait(46) do
+        if _G.TogglePro46 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro47 = Tabs.Click:AddToggle("TogglePro47", {Title = "Auto Click 47", Default = false})
+TogglePro47:OnChanged(function(Value)
+    _G.TogglePro47 = Value
+end)
+spawn(function()
+    while task.wait(47) do
+        if _G.TogglePro47 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro48 = Tabs.Click:AddToggle("TogglePro48", {Title = "Auto Click 48", Default = false})
+TogglePro48:OnChanged(function(Value)
+    _G.TogglePro48 = Value
+end)
+spawn(function()
+    while task.wait(48) do
+        if _G.TogglePro48 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro49 = Tabs.Click:AddToggle("TogglePro49", {Title = "Auto Click 49", Default = false})
+TogglePro49:OnChanged(function(Value)
+    _G.TogglePro49 = Value
+end)
+spawn(function()
+    while task.wait(49) do
+        if _G.TogglePro49 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro50 = Tabs.Click:AddToggle("TogglePro50", {Title = "Auto Click 50", Default = false})
+TogglePro50:OnChanged(function(Value)
+    _G.TogglePro50 = Value
+end)
+spawn(function()
+    while task.wait(50) do
+        if _G.TogglePro50 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro51 = Tabs.Click:AddToggle("TogglePro51", {Title = "Auto Click 51", Default = false})
+TogglePro51:OnChanged(function(Value)
+    _G.TogglePro51 = Value
+end)
+spawn(function()
+    while task.wait(51) do
+        if _G.TogglePro51 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro52 = Tabs.Click:AddToggle("TogglePro52", {Title = "Auto Click 52", Default = false})
+TogglePro52:OnChanged(function(Value)
+    _G.TogglePro52 = Value
+end)
+spawn(function()
+    while task.wait(52) do
+        if _G.TogglePro52 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro53 = Tabs.Click:AddToggle("TogglePro53", {Title = "Auto Click 53", Default = false})
+TogglePro53:OnChanged(function(Value)
+    _G.TogglePro53 = Value
+end)
+spawn(function()
+    while task.wait(53) do
+        if _G.TogglePro53 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local TogglePro54 = Tabs.Click:AddToggle("TogglePro54", {Title = "Auto Click 54", Default = false})
+TogglePro54:OnChanged(function(Value)
+    _G.TogglePro54 = Value
+end)
+spawn(function()
+    while task.wait(54) do
+        if _G.TogglePro54 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro55 = Tabs.Click:AddToggle("TogglePro55", {Title = "Auto Click 55", Default = false})
+TogglePro55:OnChanged(function(Value)
+    _G.TogglePro55 = Value
+end)
+spawn(function()
+    while task.wait(55) do
+        if _G.TogglePro55 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro56 = Tabs.Click:AddToggle("TogglePro56", {Title = "Auto Click 56", Default = false})
+TogglePro56:OnChanged(function(Value)
+    _G.TogglePro56 = Value
+end)
+spawn(function()
+    while task.wait(56) do
+        if _G.TogglePro56 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro57 = Tabs.Click:AddToggle("TogglePro57", {Title = "Auto Click 57", Default = false})
+TogglePro57:OnChanged(function(Value)
+    _G.TogglePro57 = Value
+end)
+spawn(function()
+    while task.wait(57) do
+        if _G.TogglePro57 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro58 = Tabs.Click:AddToggle("TogglePro58", {Title = "Auto Click 58", Default = false})
+TogglePro58:OnChanged(function(Value)
+    _G.TogglePro58 = Value
+end)
+spawn(function()
+    while task.wait(58) do
+        if _G.TogglePro58 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro59 = Tabs.Click:AddToggle("TogglePro59", {Title = "Auto Click 59", Default = false})
+TogglePro59:OnChanged(function(Value)
+    _G.TogglePro59 = Value
+end)
+spawn(function()
+    while task.wait(59) do
+        if _G.TogglePro59 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro60 = Tabs.Click:AddToggle("TogglePro60", {Title = "Auto Click 60", Default = false})
+TogglePro60:OnChanged(function(Value)
+    _G.TogglePro60 = Value
+end)
+spawn(function()
+    while task.wait(60) do
+        if _G.TogglePro60 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro61 = Tabs.Click:AddToggle("TogglePro61", {Title = "Auto Click 61", Default = false})
+TogglePro61:OnChanged(function(Value)
+    _G.TogglePro61 = Value
+end)
+spawn(function()
+    while task.wait(61) do
+        if _G.TogglePro61 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro62 = Tabs.Click:AddToggle("TogglePro62", {Title = "Auto Click 62", Default = false})
+TogglePro62:OnChanged(function(Value)
+    _G.TogglePro62 = Value
+end)
+spawn(function()
+    while task.wait(62) do
+        if _G.TogglePro62 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro63 = Tabs.Click:AddToggle("TogglePro63", {Title = "Auto Click 63", Default = false})
+TogglePro63:OnChanged(function(Value)
+    _G.TogglePro63 = Value
+end)
+spawn(function()
+    while task.wait(63) do
+        if _G.TogglePro63 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro64 = Tabs.Click:AddToggle("TogglePro64", {Title = "Auto Click 64", Default = false})
+TogglePro64:OnChanged(function(Value)
+    _G.TogglePro64 = Value
+end)
+spawn(function()
+    while task.wait(64) do
+        if _G.TogglePro64 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro65 = Tabs.Click:AddToggle("TogglePro65", {Title = "Auto Click 65", Default = false})
+TogglePro65:OnChanged(function(Value)
+    _G.TogglePro65 = Value
+end)
+spawn(function()
+    while task.wait(65) do
+        if _G.TogglePro65 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro66 = Tabs.Click:AddToggle("TogglePro66", {Title = "Auto Click 66", Default = false})
+TogglePro66:OnChanged(function(Value)
+    _G.TogglePro66 = Value
+end)
+spawn(function()
+    while task.wait(66) do
+        if _G.TogglePro66 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro67 = Tabs.Click:AddToggle("TogglePro67", {Title = "Auto Click 67", Default = false})
+TogglePro67:OnChanged(function(Value)
+    _G.TogglePro67 = Value
+end)
+spawn(function()
+    while task.wait(67) do
+        if _G.TogglePro67 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro68 = Tabs.Click:AddToggle("TogglePro68", {Title = "Auto Click 68", Default = false})
+TogglePro68:OnChanged(function(Value)
+    _G.TogglePro68 = Value
+end)
+spawn(function()
+    while task.wait(68) do
+        if _G.TogglePro68 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro69 = Tabs.Click:AddToggle("TogglePro69", {Title = "Auto Click 69", Default = false})
+TogglePro69:OnChanged(function(Value)
+    _G.TogglePro69 = Value
+end)
+spawn(function()
+    while task.wait(69) do
+        if _G.TogglePro69 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+
+local TogglePro70 = Tabs.Click:AddToggle("TogglePro70", {Title = "Auto Click 70", Default = false})
+TogglePro70:OnChanged(function(Value)
+    _G.TogglePro70 = Value
+end)
+spawn(function()
+    while task.wait(70) do
+        if _G.TogglePro70 then
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+        end
+    end
+end)
+local Castle = Tabs.Local:AddToggle("Castle", {Title = "Auto Inferno Castle", Default = false })
+Castle:OnChanged(function(Value)
+    _G.Castle = Value
+end)
+local Castle = Tabs.Local:AddToggle("Castle", {Title = "Auto Join Floor 25 Castle", Default = false })
+Castle:OnChanged(function(Value)
+    _G.Castle = Value
+end)
+local type = {"Tick", "Gems"}
+local DropdownCastle = Tabs.Local:AddDropdown("DropdownCastle", {
+        Title = "Select Type",
+        Values = type,
+        Multi = false,
+        Default = 1,
+    })
+local Castle = Tabs.Local:AddToggle("Castle", {Title = "Auto Buy Castle Tick", Default = false })
+Castle:OnChanged(function(Value)
+    _G.Castle = Value
+end)
+local Castle = Tabs.Local:AddToggle("Castle", {Title = "Auto Leave", Default = false })
+Castle:OnChanged(function(Value)
+    _G.Castle = Value
+end)
+Tabs.Web:AddButton({
+    Title = "Check Beru",
+    Description = "",
+    Callback = function()
+        local beruExists = false
+        for _, obj in pairs(workspace:GetChildren()) do
+            if obj:IsA("Model") and obj.Name == "Beru" then
+                beruExists = true
+                break
+            end
+        end
+        local status = beruExists and "✅" or "❌"
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Switch-Cat-Hub",
+            Text = "Status: " .. status,
+            Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
+            Duration = 10,
+            Button1 = "Cannel",
+            Callback = function()
+            end
+        })
+    end
+})
+
+Tabs.Web:AddButton({
+    Title = "Copy Server JobId",
+    Description = "",
+    Callback = function()
+        local jobId = game.JobId
+        local success, err = pcall(function()
+            setclipboard(jobId)
+        end)
+
+        local status = success and "✅" or "❌"
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Switch-Cat-Hub",
+            Text = "Status: " .. status,
+            Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
+            Duration = 10,
+            Button1 = "Cannel",
+            Callback = function()
+            end
+        })
+    end
+})
+
+local Inputxhop = Tabs.Web:AddInput("Inputxhop", {
+    Title = "Job-Id",
+    Default = "",
+    Numeric = false,
+    Finished = false,
+    Placeholder = "Input Job-Id",
+    Callback = function(Value)
+        jobIdInput = Value
+    end
+})
+
+Tabs.Web:AddButton({
+    Title = "Join Server",
+    Description = "",
+    Callback = function()
+        local jobId = jobIdInput
+        if jobId and jobId ~= "" then
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, jobId)
+        end
+    end
+})
+
+Tabs.Web:AddButton({
+    Title = "Join Random Server",
+    Description = "",
+    Callback = function()
+        local placeId = game.PlaceId
+        local teleportService = game:GetService("TeleportService")
+        teleportService:Teleport(placeId)
+    end
+})
+
+Tabs.Web:AddButton({
+    Title = "Check Player Count",
+    Description = "",
+    Callback = function()
+        local playerCount = #game.Players:GetPlayers()
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Switch-Cat-Hub",
+            Text = "Player: " .. tostring(playerCount),
+            Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
+            Duration = 10,
+            Button1 = "Cannel",
+            Callback = function()
+            end
+        })
+    end
+})
+
+Tabs.Web:AddButton({
+    Title = "Check Mob Count",
+    Description = "",
+    Callback = function()
+        local mobFolder = workspace:FindFirstChild("Mobs")
+        local mobCount = 0
+        if mobFolder then
+            mobCount = #mobFolder:GetChildren()
+        end
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Switch-Cat-Hub",
+            Text = "Mob: " .. tostring(mobCount),
+            Icon = "rbxthumb://type=Asset&id=71546332785311&w=420&h=420",
+            Duration = 10,
+            Button1 = "Cannel",
+            Callback = function()
+            end
+        })
+    end
+})
+
+local HttpService = game:GetService("HttpService")
+
+local InputWebhook = Tabs.Web:AddInput("InputWebhook", {
+    Title = "Webhook URL",
+    Default = "",
+    Numeric = false,
+    Finished = false,
+    Placeholder = "Input Webhook",
+    Callback = function(Value)
+        _G.WebhookUrl = Value
+    end
+})
+
+local ToggleProHob = Tabs.Web:AddToggle("ToggleProHob", {
+    Title = "Auto Send JobId",
+    Default = false
+})
+
+ToggleProHob:OnChanged(function(Value)
+    _G.ToggleProHob = Value
+end)
+
+spawn(function()
+    while wait(5) do
+        if _G.ToggleProHob and _G.WebhookUrl and _G.WebhookUrl ~= "" then
+            local Data = {
+                ["content"] = "Random JobId: " .. game.JobId
+            }
+            local success, response = pcall(function()
+                return HttpService:PostAsync(_G.WebhookUrl, HttpService:JSONEncode(Data), Enum.HttpContentType.ApplicationJson)
+            end)
+        end
+    end
+end)
+
+Tabs.Info:AddButton({
+	Title = "Facebook Admin",
+	Description = "",
+	Callback = function()
+setclipboard("https://www.facebook.com/share/1CBJ5zWpe2/");
+   end
+})
+Tabs.Info:AddButton({
+	Title = "Server Discord",
+	Description = "",
+	Callback = function()
+setclipboard("https://discord.gg/vkEedSvG");
+   end
+})
+local ToggleSpam = Tabs.Main2:AddToggle("ToggleSpam", {Title = "Auto Click ( Version - v1 )", Default = false })
+ToggleSpam:OnChanged(function(Value)
+    _G.ToggleSpam = Value
+end)
+
+spawn(function()
+        if _G.ToggleSpam then
+        while _G.ToggleSpam do
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+            task.wait()
+        end
+    end
+end)
+
+local ToggleSpamv2 = Tabs.Main2:AddToggle("ToggleSpamv2", {Title = "Auto Click ( Version - v2 )", Default = false })
+ToggleSpamv2:OnChanged(function(Value)
+    _G.ToggleSpamv2 = Value
+end)
+
+spawn(function()
+        if _G.ToggleSpamv2 then
+        while _G.ToggleSpamv2 do
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, game, 0)
+            task.wait()
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, game, 0)
+            task.wait()
+        end
+    end
+end)
+local ToggleConfig = Tabs.Config:AddToggle("ToggleConfig", {Title = "Auto Load Config", Default = false })
+ToggleConfig:OnChanged(function(Value)
+    _G.ToggleConfig = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleConfig then
+SaveManager:LoadAutoloadConfig()
+        end
+    end
+end)
+local ToggleTab = Tabs.Config:AddToggle("ToggleTab", {Title = "Auto Load Tab 1", Default = false })
+ToggleTab:OnChanged(function(Value)
+    _G.ToggleTab = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleTab then 
+        end
+    end
+end)
+local ToggleThemee = Tabs.Config:AddToggle("ToggleThemee", {Title = "Auto Save Themee", Default = false })
+ToggleThemee:OnChanged(function(Value)
+    _G.ToggleThemee = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleThemee then
+        end
+    end
+end)
+local ToggleConfigAll = Tabs.ToggleConfigAll:AddToggle("ToggleConfigAll", {Title = "Auto Save All Config", Default = false })
+ToggleConfigAll:OnChanged(function(Value)
+    _G.ToggleConfigAll = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleConfigAll then
+        end
+    end
+end)
+local Event = Tabs.Event:AddSection("Please Wait New Update")
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+Window:SelectTab(1)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+
+InterfaceManager:SetFolder("FluentScriptHub")
+SaveManager:SetFolder("FluentScriptHub/specific-game")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+SaveManager:LoadAutoloadConfig()
