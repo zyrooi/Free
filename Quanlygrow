@@ -41,3 +41,11 @@ OwO:Button("x2 Number Fruit", function()
         end
     end 
 end)
+OwO:Box("Name Seed", function(text, focuslost)
+   if focuslost then
+   
+   end
+end)
+OwO:Button("Dupe Seed", function()
+
+end)
