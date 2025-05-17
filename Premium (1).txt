@@ -62,6 +62,7 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Local = Window:AddTab({ Title = "Tab Location and Castle", Icon = "" }),
     Shop = Window:AddTab({ Title = "Tab Shop and Weapon", Icon = "" }),
+Tab1 = Window:AddTab({ Title = "Tab Farm and Dungeon", Icon = "" }),
 Info = Window:AddTab({ Title = "Tab Info Admin", Icon = "" }),
     
 }
