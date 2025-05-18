@@ -50,7 +50,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window = Fluent:CreateWindow({
     Title = "Kaiser Hub [ Premium ]",
     SubTitle = "By Ziugpro",
-    TabWidth = 158,
+    TabWidth = 150,
     Size = UDim2.fromOffset(515, 355),
     Acrylic = true,
     Theme = "Dark",
@@ -59,6 +59,7 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Raid = Window:AddTab({ Title = "Tab Fruit and Raid", Icon = "" }),
+    Esp = Window:AddTab({ Title = "Tab ESP", Icon = "" }),
     Shop = Window:AddTab({ Title = "Tab Teleport and Shop", Icon = "" }),
     Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
     
@@ -675,4 +676,193 @@ Tabs.Shop:AddButton({
         game:GetService("Players").LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
 	end
 })
+local ToggleESP = Tabs.Esp:AddToggle("ToggleESP", {Title = "Esp Player", Default = false})
+ToggleESP:OnChanged(function(Value)
+    _G.ToggleESP = Value
+end)
 
+spawn(function()
+    while wait(1) do
+        if _G.ToggleESP then
+            for _, player in ipairs(game.Players:GetPlayers()) do
+                if player ~= game.Players.LocalPlayer and player.Character and not player.Character:FindFirstChild("ESPTag") then
+                    if player.Character:FindFirstChild("Head") then
+                        local head = player.Character.Head
+                        local billboardGui = Instance.new("BillboardGui")
+                        billboardGui.Name = "ESPTag"
+                        billboardGui.Adornee = head
+                        billboardGui.Parent = player.Character
+                        billboardGui.Size = UDim2.new(0, 200, 0, 50)
+                        billboardGui.StudsOffset = Vector3.new(0, 3, 0)
+                        billboardGui.AlwaysOnTop = true
+
+                        local distance = (player.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                        local distanceTag = Instance.new("TextLabel")
+                        distanceTag.Parent = billboardGui
+                        distanceTag.Text = string.format("%.2f studs", distance)
+                        distanceTag.TextColor3 = Color3.fromRGB(255, 255, 255)
+                        distanceTag.TextStrokeTransparency = 0.5
+                        distanceTag.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+                        distanceTag.BackgroundTransparency = 1
+                        distanceTag.Size = UDim2.new(1, 0, 0.3, 0)
+                        distanceTag.Position = UDim2.new(0, 0, 0, 0)
+                        distanceTag.TextScaled = false
+                        distanceTag.Font = Enum.Font.SourceSansBold
+                        distanceTag.TextSize = 22
+
+                        local nameTag = Instance.new("TextLabel")
+                        nameTag.Parent = billboardGui
+                        nameTag.Text = player.Name
+                        nameTag.TextColor3 = Color3.fromRGB(255, 255, 255)
+                        nameTag.TextStrokeTransparency = 0.5
+                        nameTag.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+                        nameTag.BackgroundTransparency = 1
+                        nameTag.Size = UDim2.new(1, 0, 0.7, 0)
+                        nameTag.Position = UDim2.new(0, 0, 0.3, 0)
+                        nameTag.TextScaled = false
+                        nameTag.Font = Enum.Font.SourceSansBold
+                        nameTag.TextSize = 22
+
+                        game:GetService("RunService").Heartbeat:Connect(function()
+                            if player.Character and player.Character:FindFirstChild("Head") and billboardGui and distanceTag then
+                                local distance = (player.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                                distanceTag.Text = string.format("%.2f studs", distance)
+                                billboardGui.StudsOffset = Vector3.new(0, 3, 0)
+                            end
+                        end)
+                    end
+                end
+            end
+        else
+            for _, player in ipairs(game.Players:GetPlayers()) do
+                if player.Character and player.Character:FindFirstChild("ESPTag") then
+                    player.Character:FindFirstChild("ESPTag"):Destroy()
+                end
+            end
+        end
+    end
+end)
+local ToggleMobESP = Tabs.Main:AddToggle("ToggleMobESP", {Title = "Esp Mob", Default = false})
+ToggleMobESP:OnChanged(function(Value)
+    _G.ToggleMobESP = Value
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.ToggleMobESP then
+            for _, mob in pairs(workspace.Enemies:GetChildren()) do
+                if mob:FindFirstChild("Head") and not mob.Head:FindFirstChild("MobESP") then
+                    local esp = Instance.new("BillboardGui")
+                    esp.Name = "MobESP"
+                    esp.Adornee = mob.Head
+                    esp.Size = UDim2.new(0, 200, 0, 50)
+                    esp.StudsOffset = Vector3.new(0, 3, 0)
+                    esp.AlwaysOnTop = true
+                    esp.Parent = mob.Head
+
+                    local distance = (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                    local distanceTag = Instance.new("TextLabel")
+                    distanceTag.Parent = esp
+                    distanceTag.Text = string.format("%.2f studs", distance)
+                    distanceTag.TextColor3 = Color3.new(1,1,1)
+                    distanceTag.TextStrokeTransparency = 0.5
+                    distanceTag.TextStrokeColor3 = Color3.new(0,0,0)
+                    distanceTag.BackgroundTransparency = 1
+                    distanceTag.Size = UDim2.new(1, 0, 0.3, 0)
+                    distanceTag.Position = UDim2.new(0, 0, 0, 0)
+                    distanceTag.TextScaled = false
+                    distanceTag.Font = Enum.Font.SourceSansBold
+                    distanceTag.TextSize = 22
+
+                    local nameTag = Instance.new("TextLabel")
+                    nameTag.Parent = esp
+                    nameTag.Text = mob.Name
+                    nameTag.TextColor3 = Color3.new(1,1,1)
+                    nameTag.TextStrokeTransparency = 0.5
+                    nameTag.TextStrokeColor3 = Color3.new(0,0,0)
+                    nameTag.BackgroundTransparency = 1
+                    nameTag.Size = UDim2.new(1, 0, 0.7, 0)
+                    nameTag.Position = UDim2.new(0, 0, 0.3, 0)
+                    nameTag.TextScaled = false
+                    nameTag.Font = Enum.Font.SourceSansBold
+                    nameTag.TextSize = 22
+
+                    game:GetService("RunService").Heartbeat:Connect(function()
+                        if _G.ToggleMobESP and mob and mob:FindFirstChild("Head") then
+                            local dist = (mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                            distanceTag.Text = string.format("%.2f studs", dist)
+                        end
+                    end)
+                end
+            end
+        else
+            for _, mob in pairs(workspace.Enemies:GetChildren()) do
+                if mob:FindFirstChild("Head") and mob.Head:FindFirstChild("MobESP") then
+                    mob.Head.MobESP:Destroy()
+                end
+            end
+        end
+    end
+end)
+local ToggleFruitESP = Tabs.Main:AddToggle("ToggleFruitESP", {Title = "Esp Fruit", Default = false})
+ToggleFruitESP:OnChanged(function(Value)
+    _G.ToggleFruitESP = Value
+end)
+
+spawn(function()
+    while wait(1) do
+        if _G.ToggleFruitESP then
+            for _, fruit in pairs(workspace:GetChildren()) do
+                if string.find(fruit.Name:lower(), "fruit") and fruit:IsA("Tool") and not fruit:FindFirstChild("FruitESP") then
+                    local esp = Instance.new("BillboardGui")
+                    esp.Name = "FruitESP"
+                    esp.Adornee = fruit:FindFirstChild("Handle") or fruit:FindFirstChildWhichIsA("BasePart")
+                    esp.Size = UDim2.new(0, 200, 0, 50)
+                    esp.StudsOffset = Vector3.new(0, 3, 0)
+                    esp.AlwaysOnTop = true
+                    esp.Parent = fruit
+
+                    local distance = (esp.Adornee.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                    local distanceTag = Instance.new("TextLabel")
+                    distanceTag.Parent = esp
+                    distanceTag.Text = string.format("%.2f studs", distance)
+                    distanceTag.TextColor3 = Color3.new(1,1,1)
+                    distanceTag.TextStrokeTransparency = 0.5
+                    distanceTag.TextStrokeColor3 = Color3.new(0,0,0)
+                    distanceTag.BackgroundTransparency = 1
+                    distanceTag.Size = UDim2.new(1, 0, 0.3, 0)
+                    distanceTag.Position = UDim2.new(0, 0, 0, 0)
+                    distanceTag.TextScaled = false
+                    distanceTag.Font = Enum.Font.SourceSansBold
+                    distanceTag.TextSize = 22
+
+                    local nameTag = Instance.new("TextLabel")
+                    nameTag.Parent = esp
+                    nameTag.Text = fruit.Name
+                    nameTag.TextColor3 = Color3.new(1,1,1)
+                    nameTag.TextStrokeTransparency = 0.5
+                    nameTag.TextStrokeColor3 = Color3.new(0,0,0)
+                    nameTag.BackgroundTransparency = 1
+                    nameTag.Size = UDim2.new(1, 0, 0.7, 0)
+                    nameTag.Position = UDim2.new(0, 0, 0.3, 0)
+                    nameTag.TextScaled = false
+                    nameTag.Font = Enum.Font.SourceSansBold
+                    nameTag.TextSize = 22
+
+                    game:GetService("RunService").Heartbeat:Connect(function()
+                        if _G.ToggleFruitESP and fruit and esp.Adornee then
+                            local dist = (esp.Adornee.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+                            distanceTag.Text = string.format("%.2f studs", dist)
+                        end
+                    end)
+                end
+            end
+        else
+            for _, fruit in pairs(workspace:GetChildren()) do
+                if fruit:FindFirstChild("FruitESP") then
+                    fruit.FruitESP:Destroy()
+                end
+            end
+        end
+    end
+end)
