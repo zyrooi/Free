@@ -1,4 +1,4 @@
-game.StarterGui:SetCore("SendNotification", {
+ game.StarterGui:SetCore("SendNotification", {
     Title = "Kaiser Hub",
     Text = "Success Loading",
     Icon = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420",
@@ -506,43 +506,9 @@ spawn(function()
         end
     end
 end)
-local AreaList = {
-        "Jungle",
-        "Buggy",
-        "Desert",
-        "Snow",
-        "Marine",
-        "Sky",
-        "Prison",
-        "Colosseum",
-        "Magma",
-        "Fishman",
-        "Sky Island",
-        "Fountain"
-        "Area 1",
-        "Area 2",
-        "Zombie",
-        "Marine",
-        "Snow Mountain",
-        "Ice fire",
-        "Ship",
-        "Frost",
-        "Forgotten"
-        "Amazon",
-        "Marine Tree",
-        "Deep Forest",
-        "Haunted Castle",
-        "Nut Island",
-        "Ice Cream Island",
-        "Cake Island",
-        "Choco Island",
-        "Candy Island",
-        "Tiki Outpost"
-    };
-end
 local Dropdown = Tabs.Shop:AddDropdown("Dropdown", {
         Title = "Select Island",
-        Values = AreaList,
+        Values = {"None Island"},
         Multi = false,
         Default = 1,
     })
