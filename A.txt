@@ -1,0 +1,726 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Kaiser Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=91241799178994&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Kaiser Hub",
+    Text = "Reset Config Script Select Yes Or No",
+    Icon = "rbxthumb://type=Asset&id=135702171440429&w=420&h=420",
+    Duration = 5,
+    Button1 = "Yes",
+    Button2 = "No",
+    Callback = function()
+    end
+})
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=135702171440429&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 58, 0, 58)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = true
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Kaiser Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 158,
+    Size = UDim2.fromOffset(515, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Raid = Window:AddTab({ Title = "Tab Fruit and Raid", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Tab Teleport and Shop", Icon = "" }),
+    Main = Window:AddTab({ Title = "Tab Farming", Icon = "" }),
+    
+}
+
+function Bone()
+    local level = game.Players.LocalPlayer.Data.Level.Value
+    if level >= 2300 and level < 2650 then
+        return {
+            NameMon = "Cocoa Warrior",
+            NameQuest = "ChocQuest1",
+            QuestLv = 3,
+            CFrameQ = CFrame.new(231.75, 23.9003029, -12200.292)
+        }
+    end
+    return nil
+end
+
+
+function Tween()
+    local level = game.Players.LocalPlayer.Data.Level.Value
+    if level >= 1 and level < 9 then
+        return {
+            NameMon = "Bandit",
+            NameQuest = "BanditQuest1",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(1060.9383544922, 16.455066680908, 1547.7841796875)
+        }
+    elseif level >= 10 and level < 14 then
+        return {
+            NameMon = "Monkey",
+            NameQuest = "JungleQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(-1601.6553955078, 36.85213470459, 153.38809204102)
+        }
+    elseif level >= 15 and level < 29 then
+        return {
+            NameMon = "Gorilla",
+            NameQuest = "JungleQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(-1601.6553955078, 36.85213470459, 153.38809204102)
+        }
+    elseif level >= 30 and level < 39 then
+        return {
+            NameMon = "Pirate",
+            NameQuest = "BuggyQuest1",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(-1140.1761474609, 4.752049446106, 3827.4057617188)
+        }
+    elseif level >= 40 and level < 59 then
+        return {
+            NameMon = "Brute",
+            NameQuest = "BuggyQuest1",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(-1140.1761474609, 4.752049446106, 3827.4057617188)
+        }
+    elseif level >= 59 and level < 74 then
+        return {
+            NameMon = "Desert Bandit",
+            NameQuest = "DesertQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(896.51721191406, 6.4384617805481, 4390.1494140625)
+        }
+    elseif level >= 75 and level < 89 then
+        return {
+            NameMon = "Desert Officer",
+            NameQuest = "DesertQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(896.51721191406, 6.4384617805481, 4390.1494140625)
+        }
+    elseif level >= 90 and level < 99 then
+        return {
+            NameMon = "Snow Bandit",
+            NameQuest = "SnowQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(1386.8073730469, 87.272789001465, - 1298.3576660156)
+        }
+    elseif level >= 100 and level < 119 then
+        return {
+            NameMon = "Snowman",
+            NameQuest = "SnowQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(1386.8073730469, 87.272789001465, - 1298.3576660156)
+        }
+    elseif level >= 120 and level < 149 then
+        return {
+            NameMon = "Chief Petty Officer",
+            NameQuest = "MarineQuest2",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 5035.49609375, 28.677835464478, 4324.1840820313)
+        }
+    elseif level >= 150 and level < 174 then
+        return {
+            NameMon = "Sky Bandit",
+            NameQuest = "SkyQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 4842.1372070313, 717.69543457031, - 2623.0483398438)
+        }
+    elseif level >= 175 and level < 189 then
+        return {
+            NameMon = "Dark Master",
+            NameQuest = "SkyQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 4842.1372070313, 717.69543457031, - 2623.0483398438)
+        }
+    elseif level >= 190 and level < 209 then
+        return {
+            NameMon = "Prisoner",
+            NameQuest = "PrisonerQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(5310.60547, 0.350014925, 474.946594, 0.0175017118, 0, 0.999846935, 0, 1, 0, - 0.999846935, 0, 0.0175017118)
+        }
+
+    elseif level >= 210 and level < 249 then
+        return {
+            NameMon = "Dangerous Prisoner",
+            NameQuest = "PrisonerQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(5310.60547, 0.350014925, 474.946594, 0.0175017118, 0, 0.999846935, 0, 1, 0, - 0.999846935, 0, 0.0175017118)
+        }
+    elseif level >= 250 and level < 274 then
+        return {
+            NameMon = "Toga Warrior",
+            NameQuest = "ColosseumQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 1577.7890625, 7.4151420593262, - 2984.4838867188)
+        }
+    elseif level >= 275 and level < 299 then
+        return {
+            NameMon = "Gladiator",
+            NameQuest = "ColosseumQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 1577.7890625, 7.4151420593262, - 2984.4838867188)
+        }
+    elseif level >= 300 and level < 324 then
+        return {
+            NameMon = "Military Soldier",
+            NameQuest = "MagmaQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 5316.1157226563, 12.262831687927, 8517.00390625)
+        }
+    elseif level >= 325 and level < 374 then
+        return {
+            NameMon = "Military Spy",
+            NameQuest = "MagmaQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 5316.1157226563, 12.262831687927, 8517.00390625)
+        }
+    elseif level >= 375 and level < 399 then
+        return {
+            NameMon = "Fishman Warrior",
+            NameQuest = "FishmanQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+        }
+    elseif level >= 400 and level < 499 then
+        return {
+            NameMon = "Fishman Commando",
+            NameQuest = "FishmanQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(61122.65234375, 18.497442245483, 1569.3997802734)
+        }
+    end
+    return nil
+end
+
+function Mastery()
+local level = game.Players.LocalPlayer.Data.Level.Value
+  if level >= 1500 and level < 2650 then
+        return {
+            NameMon = "Monkey",
+            NameQuest = "JungleQuest",
+            QuestLv = 1,
+            CFrameQ = CFrame.new(- 16665.19140625, 104.59640502929688, 1579.6943359375)
+        }
+end
+    return nil
+end
+local player = game.Players.LocalPlayer
+
+local function getTools()
+    local tools = {}
+    for _, item in pairs(player.Backpack:GetChildren()) do
+        if item:IsA("Tool") then
+            table.insert(tools, item.Name)
+        end
+    end
+    local char = player.Character
+    if char then
+        for _, item in pairs(char:GetChildren()) do
+            if item:IsA("Tool") then
+                table.insert(tools, item.Name)
+            end
+        end
+    end
+    return tools
+end
+
+local toolList = getTools()
+
+local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+    Title = "Select Tool",
+    Values = toolList,
+    Multi = false,
+    Default = 1,
+})
+
+Dropdown:OnChanged(function(value)
+end)
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Auto Farm Level", Default = false})
+TogglePro:OnChanged(function(Value)
+    _G.TogglePro = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.TogglePro then
+            local questInfo = Tween()
+            if questInfo then
+                local player = game.Players.LocalPlayer
+                local char = player.Character or player.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+                local rs = game:GetService("ReplicatedStorage")
+                local ts = game:GetService("TweenService")
+                local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear)
+
+                if (not string.find(player.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, questInfo.NameMon)
+                    or player.PlayerGui.Main.Quest.Visible == false) then
+
+                    rs.Remotes.CommF_:InvokeServer("AbandonQuest")
+                    hrp.CFrame = questInfo.CFrameQ
+                    repeat wait() until (questInfo.CFrameQ.Position - hrp.Position).Magnitude <= 5
+                    rs.Remotes.CommF_:InvokeServer("StartQuest", questInfo.NameQuest, questInfo.QuestLv)
+                    wait(1)
+                end
+
+                local mobs = workspace.Enemies:GetChildren()
+                for _, mob in pairs(mobs) do
+                    if mob.Name == questInfo.NameMon and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
+                        hrp.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 5, 0)
+                        rs.Remotes.CommF_:InvokeServer("UseSkill", 1, mob)
+                        repeat wait() until mob.Humanoid.Health <= 0 or not _G.TogglePro
+                    end
+                    if not _G.TogglePro then break end
+                end
+               for _,m in pairs(workspace.Enemies:GetChildren()) do if m:FindFirstChild("Humanoid") then m.Humanoid.Health = 0 end end
+                wait(0.5)
+            end
+        end
+    end
+end)
+local ToggleBring = Tabs.Main:AddToggle("ToggleBring", {Title = "Bring Mob", Default = false})
+ToggleBring:OnChanged(function(Value)
+    _G.BringMob = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.BringMob then
+            for _, mob in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                if mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") and mob.Humanoid.Health > 0 then
+                    mob.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -5, 0)
+                    mob.Humanoid:ChangeState(11)
+                end
+            end
+        end
+    end
+end)
+Tabs.Main:AddParagraph({
+        Title = "Bone Farm",
+        Content = "!______!"
+    })
+ local ToggleBonw = Tabs.Main:AddToggle("ToggleBonw", {Title = "Auto Farm Bone", Default = false})
+ToggleBonw:OnChanged(function(Value)
+    _G.ToggleBonw = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleBonw then
+            local questInfo = Bone()
+            if questInfo then
+                local player = game.Players.LocalPlayer
+                local char = player.Character or player.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+                local rs = game:GetService("ReplicatedStorage")
+
+                local mobs = workspace.Enemies:GetChildren()
+                for _, mob in pairs(mobs) do
+                    if mob.Name == questInfo.NameMon and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
+                        hrp.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 5, 0)
+                        rs.Remotes.CommF_:InvokeServer("UseSkill", 1, mob)
+                        repeat wait() until mob.Humanoid.Health <= 0 or not _G.TogglePro
+                    end
+                    if not _G.ToggleBonw then break end
+                end
+                for _,m in pairs(workspace.Enemies:GetChildren()) do
+                    if m:FindFirstChild("Humanoid") then
+                        m.Humanoid.Health = 0
+                    end
+                end
+                wait(0.5)
+            end
+        end
+    end
+end)
+
+function Bone()
+    local level = game.Players.LocalPlayer.Data.Level.Value
+    if level >= 2300 and level < 2650 then
+        return {
+            NameMon = "Cocoa Warrior",
+            NameQuest = "ChocQuest1",
+            QuestLv = 3,
+            CFrameQ = CFrame.new(231.75, 23.9003029, -12200.292)
+        }
+    end
+    return nil
+end
+local ToggleQuest = Tabs.Main:AddToggle("ToggleQuest", {Title = "Auto Quest", Default = false})
+ToggleQuest:OnChanged(function(Value)
+    _G.ToggleQuest = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleQuest then
+            local questInfo = Bone()
+            if questInfo then
+                local player = game.Players.LocalPlayer
+                local char = player.Character or player.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+                local rs = game:GetService("ReplicatedStorage")
+
+                if (not string.find(player.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, questInfo.NameMon)
+                    or player.PlayerGui.Main.Quest.Visible == false) then
+
+                    rs.Remotes.CommF_:InvokeServer("AbandonQuest")
+                    hrp.CFrame = questInfo.CFrameQ
+                    repeat wait() until (questInfo.CFrameQ.Position - hrp.Position).Magnitude <= 5
+                    rs.Remotes.CommF_:InvokeServer("StartQuest", questInfo.NameQuest, questInfo.QuestLv)
+                    wait(1)
+                end
+            end
+        end
+    end
+end)
+Tabs.Main:AddParagraph({
+        Title = "Mastery",
+        Content = "!______!"
+    })
+local DropFruit = Tabs.Main:AddDropdown("DropFruit", {
+        Title = "Select Tool",
+        Values = {"Fruit"},
+        Multi = false,
+        Default = 1,
+    })
+
+local ToggleMastery = Tabs.Main:AddToggle("ToggleMastery", {Title = "Auto Farm Mastery", Default = false})
+ToggleMastery:OnChanged(function(Value)
+    _G.ToggleMastery = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleMastery then
+            local questInfo = Mastery()
+            if questInfo then
+                local player = game.Players.LocalPlayer
+                local char = player.Character or player.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+                local rs = game:GetService("ReplicatedStorage")
+                local ts = game:GetService("TweenService")
+                local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Linear)
+
+                if (not string.find(player.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, questInfo.NameMon)
+                    or player.PlayerGui.Main.Quest.Visible == false) then
+
+                    rs.Remotes.CommF_:InvokeServer("AbandonQuest")
+                    hrp.CFrame = questInfo.CFrameQ
+                    repeat wait() until (questInfo.CFrameQ.Position - hrp.Position).Magnitude <= 5
+                    rs.Remotes.CommF_:InvokeServer("StartQuest", questInfo.NameQuest, questInfo.QuestLv)
+                    wait(1)
+                end
+
+                local mobs = workspace.Enemies:GetChildren()
+                for _, mob in pairs(mobs) do
+                    if mob.Name == questInfo.NameMon and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
+                        hrp.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 5, 0)
+                        rs.Remotes.CommF_:InvokeServer("UseSkill", 1, mob)
+                        repeat wait() until mob.Humanoid.Health <= 0 or not _G.ToggleMastery
+                    end
+                    if not _G.ToggleMastery then break end
+                end
+               for _, m in pairs(workspace.Enemies:GetChildren()) do
+                   if m:FindFirstChild("Humanoid") then m.Humanoid.Health = 0 end
+               end
+                wait(0.5)
+            end
+        end
+    end
+end)
+local ToggleSkill = Tabs.Main:AddToggle("ToggleSkill", {Title = "Auto Spam Skill (Fruit)", Default = false})
+ToggleSkill:OnChanged(function(Value)
+    _G.ToggleSkill = Value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ToggleSkill then
+            local player = game.Players.LocalPlayer
+            local char = player.Character or player.CharacterAdded:Wait()
+            local hrp = char:WaitForChild("HumanoidRootPart")
+            local backpack = player.Backpack
+
+            for _, tool in pairs(backpack:GetChildren()) do
+                if tool:IsA("Tool") and string.find(tool.Name, "Fruit") then
+                    player.Character.Humanoid:EquipTool(tool)
+                    break
+                end
+            end
+
+            local closestMob, minDist = nil, math.huge
+            for _, mob in pairs(workspace.Enemies:GetChildren()) do
+                if mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") and mob.Humanoid.Health > 0 then
+                    local dist = (mob.HumanoidRootPart.Position - hrp.Position).Magnitude
+                    if dist < minDist then
+                        closestMob = mob
+                        minDist = dist
+                    end
+                end
+            end
+
+            if closestMob then
+                hrp.CFrame = closestMob.HumanoidRootPart.CFrame * CFrame.new(0, 5, 0)
+                for i = 1, 5 do
+                    pcall(function()
+                        game:service("VirtualInputManager"):SendKeyEvent(true, tostring(i), false, game)
+                        wait(0.1)
+                        game:service("VirtualInputManager"):SendKeyEvent(false, tostring(i), false, game)
+                    end)
+                    wait(0.5)
+                end
+            end
+        end
+    end
+end)
+local AreaList = {
+        "Jungle",
+        "Buggy",
+        "Desert",
+        "Snow",
+        "Marine",
+        "Sky",
+        "Prison",
+        "Colosseum",
+        "Magma",
+        "Fishman",
+        "Sky Island",
+        "Fountain"
+        "Area 1",
+        "Area 2",
+        "Zombie",
+        "Marine",
+        "Snow Mountain",
+        "Ice fire",
+        "Ship",
+        "Frost",
+        "Forgotten"
+        "Amazon",
+        "Marine Tree",
+        "Deep Forest",
+        "Haunted Castle",
+        "Nut Island",
+        "Ice Cream Island",
+        "Cake Island",
+        "Choco Island",
+        "Candy Island",
+        "Tiki Outpost"
+    };
+end
+local Dropdown = Tabs.Shop:AddDropdown("Dropdown", {
+        Title = "Select Island",
+        Values = AreaList,
+        Multi = false,
+        Default = 1,
+    })
+local ToggleProScam = Tabs.Shop:AddToggle("ToggleProScam", {Title = "Tween To Island", Default = false })
+ToggleProScam:OnChanged(function(Value)
+    _G.ToggleProScam = Value
+end)
+Tabs.Shop:AddParagraph({
+        Title = "Shop",
+        Content = "!______!"
+    })
+
+Tabs.Shop:AddButton({
+	Title = "Geppo",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Geppo")
+	end
+})
+
+Tabs.Shop:AddButton({
+	Title = "Buso Haki",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+	end
+})
+
+Tabs.Shop:AddButton({
+	Title = "Soru",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Soru")
+	end
+})
+
+
+Tabs.Shop:AddButton({
+	Title = "Ken Haki",
+	Description = "",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk","Buy")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Black Leg",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+	end
+})
+
+Tabs.Shop:AddButton({
+	Title = "Electro",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Fishman Karate",
+	Description = "",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Dragon Claw",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Superhuman",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Death Step",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Sharkman Karate",
+	Description = "",
+	Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Electric Claw",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Dragon Talon",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Godhuman",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+	end
+})
+
+Tabs.Shop:AddButton({
+	Title = "Refund Stats",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+	end
+})
+Tabs.Shop:AddButton({
+	Title = "Reroll Race",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
+	end
+})
+Tabs.Shop:AddParagraph({
+        Title = "Open Ui",
+        Content = "!______!"
+    })
+Tabs.Shop:AddButton({
+	Title = "Devil Shop",
+	Description = "",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
+        game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true
+	end
+})
+
+
+
+Tabs.Shop:AddButton({
+	Title = "Color Haki",
+	Description = "",
+	Callback = function()
+		game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
+	end
+})
+
+
+
+Tabs.Shop:AddButton({
+	Title = "Title Name",
+	Description = "",
+	Callback = function()
+		local args = {
+			[1] = "getTitles"
+		}
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+		game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
+	end
+})
+
+
+
+Tabs.Shop:AddButton({
+	Title = "Open Awakening",
+	Description = "",
+	Callback = function()
+        game:GetService("Players").LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
+	end
+})
+
