@@ -64,20 +64,6 @@ local Tabs = {
     
 }
 
-function Bone()
-    local level = game.Players.LocalPlayer.Data.Level.Value
-    if level >= 2300 and level < 2650 then
-        return {
-            NameMon = "Cocoa Warrior",
-            NameQuest = "ChocQuest1",
-            QuestLv = 3,
-            CFrameQ = CFrame.new(231.75, 23.9003029, -12200.292)
-        }
-    end
-    return nil
-end
-
-
 function Tween()
     local level = game.Players.LocalPlayer.Data.Level.Value
     if level >= 1 and level < 9 then
