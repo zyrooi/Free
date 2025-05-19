@@ -49,3 +49,20 @@ end)
 OwO:Button("Dupe Seed", function()
 
 end)
+OwO:Slider("Customize Speed Run", 1, 500, 200, function(value)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+OwO:Slider("Customize Character Size", 1, 200, 1, function(value)
+   local character = game.Players.LocalPlayer.Character
+   if character then
+      for _, part in ipairs(character:GetChildren()) do
+         if part:IsA("BasePart") then
+            part.Size = Vector3.new(2, 2, 1) * value
+         end
+      end
+      local humanoid = character:FindFirstChildOfClass("Humanoid")
+      if humanoid then
+         humanoid.HipHeight = value * 2
+      end
+   end
+end)
