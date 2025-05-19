@@ -1,6 +1,7 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/turtle"))()
 
 local OwO = library:Window("Grow A Garden")
+local www = library:Window("Misc")
 
 OwO:Button("Get All Fruit Player", function()
     local Players = game:GetService("Players")
@@ -63,6 +64,64 @@ OwO:Slider("Customize Character Size", 1, 200, 1, function(value)
       local humanoid = character:FindFirstChildOfClass("Humanoid")
       if humanoid then
          humanoid.HipHeight = value * 2
+      end
+   end
+end)
+www:Slider("Customize Fruit Size", 1, 200, 1, function(value)
+   local character = game.Players.LocalPlayer.Character
+   if character then
+      for _, part in ipairs(character:GetChildren()) do
+         if part:IsA("BasePart") and tonumber(part.Name) then
+            part.Size = Vector3.new(2, 2, 1) * value
+         end
+      end
+   end
+end)
+www:Slider("Increase Number of Fruits", 1, 10, 1, function(index)
+   local player = game.Players.LocalPlayer
+   local backpack = player:FindFirstChild("Backpack")
+   local character = player.Character
+   if backpack and character then
+      local tools = {}
+      for _, tool in ipairs(backpack:GetChildren()) do
+         if tool:IsA("Tool") then
+            table.insert(tools, tool)
+         end
+      end
+      if tools[index] then
+         tools[index].Parent = character
+      end
+   end
+end)
+www:Slider("Speed Game", 0, 500, 1, function(value)
+   game:GetService("RunService"):SetThrottleFramerateEnabled(false)
+   settings().Rendering.FramerateCap = 60 * value
+end)
+www:Button("Freeze All Player", function()
+   local lp = game.Players.LocalPlayer
+
+   for _, player in pairs(game.Players:GetPlayers()) do
+      if player ~= lp and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+         local hrp = player.Character.HumanoidRootPart
+         hrp.Anchored = true
+      end
+   end
+end)
+www:Button("Bring Player", function()
+   local lp = game.Players.LocalPlayer
+   local target = nil
+
+   for _, player in pairs(game.Players:GetPlayers()) do
+      if player ~= lp then
+         target = player
+         break
+      end
+   end
+
+   if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
+      local lpChar = lp.Character
+      if lpChar and lpChar:FindFirstChild("HumanoidRootPart") then
+         lpChar.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame
       end
    end
 end)
