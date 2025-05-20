@@ -312,7 +312,7 @@ local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/rel
 local v15 = v14:CreateWindow({
     Title = "Kaiser Hub",
     SubTitle = "By Ziugpro",
-    TabWidth = 160,
+    TabWidth = 130,
     Theme = "Dark",
     Acrylic = false,
     Size = UDim2.fromOffset(500, 370),
@@ -6393,40 +6393,19 @@ v17.ToggleBringMob:SetValue(true);
 spawn(function()
     while wait() do
         pcall(function()
-            for v733, v734 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                if (_G.BringMob and bringmob) then
-                    if ((v734.Name == MonFarm) and v734:FindFirstChild("Humanoid") and (v734.Humanoid.Health > 0)) then
-                        if (v734.Name == "Factory Staff") then
-                            if ((v734.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 1000000000) then
-                                v734.Head.CanCollide = false;
-                                v734.HumanoidRootPart.CanCollide = false;
-                                v734.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
-                                v734.HumanoidRootPart.CFrame = FarmPos;
-                                if v734.Humanoid:FindFirstChild("Animator") then
-                                    v734.Humanoid.Animator:Destroy();
-                                end
-                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge);
-                            end
-                        elseif (v734.Name == MonFarm) then
-                            if ((v734.HumanoidRootPart.Position - FarmPos.Position).Magnitude <= 1000000000) then
-                                v734.HumanoidRootPart.CFrame = FarmPos;
-                                v734.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
-                                v734.HumanoidRootPart.Transparency = 1;
-                                v734.Humanoid.JumpPower = 0;
-                                v734.Humanoid.WalkSpeed = 0;
-                                if v734.Humanoid:FindFirstChild("Animator") then
-                                    v734.Humanoid.Animator:Destroy();
-                                end
-                                v734.HumanoidRootPart.CanCollide = false;
-                                v734.Head.CanCollide = false;
-                                v734.Humanoid:ChangeState(11);
-                                v734.Humanoid:ChangeState(14);
-                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge);
-                            end
-                        end
-                    end
+    for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+        if not string.find(v.Name, "Boss") and v.Name == MonFarm and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
+            if InMyNetWork(v.HumanoidRootPart) then
+                v.HumanoidRootPart.CFrame = FarmPos
+                v.HumanoidRootPart.CanCollide = false
+                v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+                if v.Humanoid:FindFirstChild("Animator") then
+                    v.Humanoid.Animator:Destroy()
                 end
             end
+        end
+    end
+end)
         end);
     end
 end);
@@ -9321,7 +9300,7 @@ spawn(function()
     end
 end);
 v14:Notify({
-    Title = "Banana Hub",
+    Title = "Kaiser Hub",
     Content = "Tải Xong",
     Duration = 10
 });
